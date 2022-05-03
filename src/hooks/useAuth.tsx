@@ -1,9 +1,8 @@
 import { getCookie } from "cookies-next";
-import useSWR from "swr";
-import User from "../interfaces/User";
 
 const useAuth = () => {
   const token = getCookie("token");
+  const isAuth = token !== undefined;
 
   const fetcher = (apiUrl: string) =>
     fetch(apiUrl, {
@@ -17,19 +16,9 @@ const useAuth = () => {
       return res.json();
     });
 
-  const { data, error, isValidating } = useSWR<User>(
-    "https://api.spotify.com/v1/me",
-    fetcher
-  );
-
-  const isAuth = token !== undefined && !error;
-
   return {
     token,
     isAuth,
-    error,
-    user: data,
-    loading: isValidating,
     fetcher,
   };
 };
