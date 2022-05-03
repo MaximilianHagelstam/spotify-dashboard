@@ -3,6 +3,7 @@
 ## Prerequisites
 
 - Node.js 14<
+- Yarn
 
 ## Getting Started
 
@@ -10,9 +11,9 @@
 git clone https://github.com/MaximilianHagelstam/spotify-dashboard.git
 cd spotify-dashboard
 
-npm install
-npm run build
-npm start
+yarn install
+yarn build
+yarn start
 ```
 
 ## Stack
