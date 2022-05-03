@@ -1,29 +1,33 @@
 import { getCookie } from "cookies-next";
 import useSWR from "swr";
+import User from "../interfaces/User";
 
 const useAuth = () => {
   const token = getCookie("token");
-  let isAuth = token !== undefined;
 
   const fetcher = (apiUrl: string) =>
     fetch(apiUrl, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }).then((res) => res.json());
+    }).then(async (res) => {
+      if (!res.ok) {
+        throw new Error("An error occurred while fetching the data.");
+      }
+      return res.json();
+    });
 
-  const { data, error, isValidating } = useSWR(
+  const { data, error, isValidating } = useSWR<User>(
     "https://api.spotify.com/v1/me",
     fetcher
   );
 
-  if (error) {
-    isAuth = false;
-  }
+  const isAuth = token !== undefined && !error;
 
   return {
     token,
     isAuth,
+    error,
     user: data,
     loading: isValidating,
     fetcher,

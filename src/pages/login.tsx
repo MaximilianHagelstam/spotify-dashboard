@@ -34,6 +34,8 @@ const Login: NextPage = () => {
 
       window.location.hash = "";
       setCookies("token", token);
+
+      router.reload();
       router.push("/");
     }
   }, [router, isAuth]);
