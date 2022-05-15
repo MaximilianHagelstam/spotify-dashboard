@@ -9,9 +9,10 @@ module.exports = {
       },
     },
     colors: {
-      green: "#1fdf64",
-      black: "#121212",
       white: "#ffffff",
+      black: "#000000",
+      grey: "#121212",
+      green: "#1fdf64",
     },
   },
   plugins: [],

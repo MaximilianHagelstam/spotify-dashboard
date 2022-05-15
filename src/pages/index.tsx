@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import useSWR from "swr";
 import useAuth from "../hooks/useAuth";
+import Track from "../interfaces/Track";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const { isAuth, fetcher } = useAuth();
 
-  const { data, isValidating } = useSWR(
-    "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=5",
+  const { data, isValidating } = useSWR<{ items: Track[] }>(
+    "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=1",
     fetcher
   );
 
