@@ -6,7 +6,7 @@ const LogoutButton = () => {
 
   return (
     <button
-      className="bg-green-dark font-bold py-2 px-4 rounded-full hover:bg-green-light"
+      className="bg-green-dark font-bold py-2 px-4 rounded-full hover:bg-green-light hover:scale-105"
       onClick={() => {
         removeCookies("token");
         router.reload();
