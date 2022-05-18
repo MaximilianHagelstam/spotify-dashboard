@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import useSWR from "swr";
-import LogoutButton from "../components/LogoutButton";
 import TrackCard from "../components/TrackCard";
 import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
@@ -25,14 +24,11 @@ const Home: NextPage = () => {
   if (isValidating) return <p>Loading...</p>;
 
   return (
-    <>
-      <LogoutButton />
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 pb-8">
-        {data?.items.map((track) => (
-          <TrackCard key={track.id} track={track} />
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 pb-8">
+      {data?.items.map((track) => (
+        <TrackCard key={track.id} track={track} />
+      ))}
+    </div>
   );
 };
 

@@ -34,7 +34,7 @@ const TrackCard = ({ track }: TrackCardProps) => {
       <h3 className="mt-4 text-sm text-grey-text">
         {track.artists.map((artist) => artist.name).join(", ")}
       </h3>
-      <p className="mt-1 text-lg font-medium text-gray-900">{track.name}</p>
+      <p className="mt-1 text-lg">{track.name}</p>
     </a>
   );
 };
