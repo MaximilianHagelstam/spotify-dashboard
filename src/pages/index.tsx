@@ -1,8 +1,8 @@
-import { removeCookies } from "cookies-next";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import useSWR from "swr";
+import LogoutButton from "../components/LogoutButton";
 import TrackCard from "../components/TrackCard";
 import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
@@ -26,15 +26,8 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          removeCookies("token");
-          router.reload();
-        }}
-      >
-        Logout
-      </button>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 pb-8">
+      <LogoutButton />
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 pb-8">
         {data?.items.map((track) => (
           <TrackCard key={track.id} track={track} />
         ))}

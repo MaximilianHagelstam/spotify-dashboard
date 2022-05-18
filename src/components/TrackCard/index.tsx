@@ -11,7 +11,10 @@ const TrackCard = ({ track }: TrackCardProps) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <a href={track.external_urls.spotify} className="group">
+    <a
+      href={track.external_urls.spotify}
+      className="bg-grey-medium hover:bg-grey-light px-4 py-4 rounded-xl"
+    >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl">
         <Image
           alt={track.name}
@@ -19,7 +22,7 @@ const TrackCard = ({ track }: TrackCardProps) => {
           layout="fill"
           objectFit="cover"
           className={classNames(
-            "duration-700 ease-in-out group-hover:opacity-75",
+            "duration-700 ease-in-out",
             isLoading
               ? "scale-110 blur-2xl grayscale"
               : "scale-100 blur-0 grayscale-0"
@@ -28,7 +31,7 @@ const TrackCard = ({ track }: TrackCardProps) => {
         />
       </div>
 
-      <h3 className="mt-4 text-sm text-gray-700">
+      <h3 className="mt-4 text-sm text-grey-text">
         {track.artists.map((artist) => artist.name).join(", ")}
       </h3>
       <p className="mt-1 text-lg font-medium text-gray-900">{track.name}</p>

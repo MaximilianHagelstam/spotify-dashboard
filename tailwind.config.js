@@ -11,9 +11,16 @@ module.exports = {
     colors: {
       white: "#ffffff",
       black: "#000000",
-      grey: "#121212",
-      green: "#1fdf64",
-      accent: "#191919",
+      grey: {
+        dark: "#121212",
+        medium: "#181818",
+        light: "#282828",
+        text: "#949494",
+      },
+      green: {
+        light: "#1fdf64",
+        dark: "#1ed760",
+      },
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
