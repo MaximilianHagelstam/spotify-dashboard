@@ -8,12 +8,9 @@ import Layout from "../layout";
 const TopTracks: NextPage = () => {
   const { fetcher } = useAuth();
 
-  const { data, isValidating } = useSWR<{ items: Track[] }>(
-    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=8",
-    fetcher
-  );
-
-  if (isValidating) return <p>Loading...</p>;
+  const { data, isValidating } = useSWR<{
+    items: Track[];
+  }>(`https://api.spotify.com/v1/me/top/tracks?time_range=short_term`, fetcher);
 
   return (
     <Layout>
@@ -21,6 +18,15 @@ const TopTracks: NextPage = () => {
         {data?.items.map((track, idx) => (
           <TrackCard key={track.id} track={track} ranking={idx + 1} />
         ))}
+      </div>
+
+      <div className="grid place-items-center">
+        <button
+          disabled={isValidating}
+          className="bg-white text-black font-bold py-2 px-6 rounded-full my-8 hover:scale-105"
+        >
+          {isValidating ? "Loading..." : "Load More"}
+        </button>
       </div>
     </Layout>
   );
