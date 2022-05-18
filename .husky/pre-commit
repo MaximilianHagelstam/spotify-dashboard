@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '💅Formatting...'
+yarn format
+
+echo '👷Linting...'
+yarn lint
+
+echo '✅✅✅ Ready to commit ✅✅✅'
