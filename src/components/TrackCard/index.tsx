@@ -5,9 +5,10 @@ import classNames from "../../lib/classNames";
 
 interface TrackCardProps {
   track: Track;
+  ranking: number;
 }
 
-const TrackCard = ({ track }: TrackCardProps) => {
+const TrackCard = ({ track, ranking }: TrackCardProps) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
@@ -34,7 +35,9 @@ const TrackCard = ({ track }: TrackCardProps) => {
       <h3 className="mt-4 text-sm text-grey-text">
         {track.artists.map((artist) => artist.name).join(", ")}
       </h3>
-      <p className="mt-1 text-lg">{track.name}</p>
+      <p className="mt-1 text-lg">
+        {ranking}. {track.name}
+      </p>
     </a>
   );
 };

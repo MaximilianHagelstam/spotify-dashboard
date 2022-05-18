@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   const { fetcher } = useAuth();
 
   const { data, isValidating } = useSWR<{ items: Track[] }>(
-    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5",
+    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=8",
     fetcher
   );
 
@@ -18,8 +18,8 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 pb-8">
-        {data?.items.map((track) => (
-          <TrackCard key={track.id} track={track} />
+        {data?.items.map((track, idx) => (
+          <TrackCard key={track.id} track={track} ranking={idx + 1} />
         ))}
       </div>
     </Layout>
