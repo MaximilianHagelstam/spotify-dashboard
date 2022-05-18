@@ -1,29 +1,46 @@
+import { setCookies } from "cookies-next";
 import type { NextPage } from "next";
-import useSWR from "swr";
-import TrackCard from "../components/TrackCard";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import Track from "../interfaces/Track";
-import Layout from "../layout";
 
-const Home: NextPage = () => {
-  const { fetcher } = useAuth();
+const Login: NextPage = () => {
+  const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
+  const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
+  const AUTH_URL = "https://accounts.spotify.com/authorize";
+  const RESPONSE_TYPE = "token";
+  const SCOPE = "user-read-private user-top-read";
 
-  const { data, isValidating } = useSWR<{ items: Track[] }>(
-    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=8",
-    fetcher
-  );
+  const LOGIN_URL = `${AUTH_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
 
-  if (isValidating) return <p>Loading...</p>;
+  const router = useRouter();
+  const { isAuth } = useAuth();
 
-  return (
-    <Layout>
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 pb-8">
-        {data?.items.map((track, idx) => (
-          <TrackCard key={track.id} track={track} ranking={idx + 1} />
-        ))}
-      </div>
-    </Layout>
-  );
+  useEffect(() => {
+    if (isAuth) {
+      router.push("/top-tracks");
+    }
+
+    const { hash } = window.location;
+    if (hash) {
+      let token = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"));
+
+      if (!token) return;
+
+      token = token.split("=")[1];
+
+      window.location.hash = "";
+      setCookies("token", token);
+
+      router.reload();
+      router.push("/top-tracks");
+    }
+  }, [router, isAuth]);
+
+  return <a href={LOGIN_URL}>Login to Spotify</a>;
 };
 
-export default Home;
+export default Login;

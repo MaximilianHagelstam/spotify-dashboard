@@ -2,21 +2,12 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import useAuth from "../hooks/useAuth";
 import classNames from "../lib/classNames";
 import LogoutButton from "./LogoutButton";
 import navLinks from "./navLinks";
 
 const Navbar = () => {
-  const { isAuth } = useAuth();
   const router = useRouter();
-
-  useEffect(() => {
-    if (!isAuth) {
-      router.push("/login");
-    }
-  }, [router, isAuth]);
 
   return (
     <Disclosure as="nav" className="bg-black">
@@ -41,7 +32,7 @@ const Navbar = () => {
                           router.pathname === link.href
                             ? "font-bold"
                             : "text-grey-text hover:text-white transition ease-in-out",
-                          "mx-4 text-sm"
+                          "px-3 text-sm"
                         )}
                       >
                         {link.name}
@@ -81,7 +72,7 @@ const Navbar = () => {
                     router.pathname === link.href
                       ? "font-bold"
                       : "text-grey-text hover:text-white transition ease-in-out",
-                    "mx-4 text-sm"
+                    "px-3 text-sm"
                   )}
                 >
                   {link.name}
