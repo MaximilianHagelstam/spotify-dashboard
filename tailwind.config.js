@@ -13,6 +13,7 @@ module.exports = {
       black: "#000000",
       grey: "#121212",
       green: "#1fdf64",
+      accent: "#191919",
     },
   },
   plugins: [],
