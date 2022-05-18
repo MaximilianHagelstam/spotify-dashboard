@@ -1,22 +1,25 @@
 import type { NextPage } from "next";
 import useSWR from "swr";
-import TrackCard from "../components/TrackCard";
+import ArtistCard from "../components/ArtistCard";
 import useAuth from "../hooks/useAuth";
-import Track from "../interfaces/Track";
+import Artist from "../interfaces/Artist";
 import Layout from "../layout";
 
-const TopTracks: NextPage = () => {
+const TopArtists: NextPage = () => {
   const { fetcher } = useAuth();
 
   const { data, isValidating } = useSWR<{
-    items: Track[];
-  }>(`https://api.spotify.com/v1/me/top/tracks?time_range=short_term`, fetcher);
+    items: Artist[];
+  }>(
+    `https://api.spotify.com/v1/me/top/artists?time_range=short_term`,
+    fetcher
+  );
 
   return (
     <Layout>
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-        {data?.items.map((track, idx) => (
-          <TrackCard key={track.id} track={track} ranking={idx + 1} />
+        {data?.items.map((artist, idx) => (
+          <ArtistCard key={artist.id} artist={artist} ranking={idx + 1} />
         ))}
       </div>
 
@@ -32,4 +35,4 @@ const TopTracks: NextPage = () => {
   );
 };
 
-export default TopTracks;
+export default TopArtists;
