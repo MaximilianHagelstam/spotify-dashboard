@@ -16,5 +16,5 @@ module.exports = {
       accent: "#191919",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };

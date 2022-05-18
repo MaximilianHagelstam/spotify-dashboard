@@ -34,10 +34,11 @@ const Home: NextPage = () => {
       >
         Logout
       </button>
-      {data?.items.map((track) => (
-        <TrackCard key={track.id} track={track} />
-      ))}
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 pb-8">
+        {data?.items.map((track) => (
+          <TrackCard key={track.id} track={track} />
+        ))}
+      </div>
     </>
   );
 };

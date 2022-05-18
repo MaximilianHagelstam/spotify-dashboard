@@ -11,7 +11,7 @@ interface Album {
   images: Image[];
   id: string;
   external_urls: { spotify: string };
-  Artists: Artist[];
+  artists: Artist[];
 }
 
 interface Artist {
