@@ -16,7 +16,7 @@ const TrackCard = ({ track, ranking }: TrackCardProps) => {
       href={track.external_urls.spotify}
       className="bg-grey-medium hover:bg-grey-light px-4 py-4 rounded-xl"
     >
-      <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl">
+      <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl shadow-lg">
         <Image
           alt={track.name}
           src={track.album.images[0].url}
