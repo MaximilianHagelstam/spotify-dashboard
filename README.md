@@ -4,6 +4,10 @@
 
 # Spotify Dashboard
 
+<a href="https://spotify-dashboard-demo.vercel.app">
+  <img src="screenshot.png" alt="screenshot" width="700"/>
+</a>
+
 ## Prerequisites
 
 - Node.js 16.x
