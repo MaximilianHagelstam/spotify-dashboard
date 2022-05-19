@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import useSWR from "swr";
 import ArtistCard from "../components/ArtistCard";
+import ErrorPage from "../components/ErrorPage";
 import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Layout from "../layout";
@@ -8,12 +9,16 @@ import Layout from "../layout";
 const TopArtists: NextPage = () => {
   const { fetcher } = useAuth();
 
-  const { data, isValidating } = useSWR<{
+  const { data, isValidating, error } = useSWR<{
     items: Artist[];
   }>(
     `https://api.spotify.com/v1/me/top/artists?time_range=short_term`,
     fetcher
   );
+
+  if (isValidating) return <p>Loading...</p>;
+
+  if (error) return <ErrorPage />;
 
   return (
     <Layout>

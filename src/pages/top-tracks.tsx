@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import useSWR from "swr";
+import ErrorPage from "../components/ErrorPage";
 import TrackCard from "../components/TrackCard";
 import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
@@ -8,9 +9,13 @@ import Layout from "../layout";
 const TopTracks: NextPage = () => {
   const { fetcher } = useAuth();
 
-  const { data, isValidating } = useSWR<{
+  const { data, isValidating, error } = useSWR<{
     items: Track[];
   }>(`https://api.spotify.com/v1/me/top/tracks?time_range=short_term`, fetcher);
+
+  if (isValidating) return <p>Loading...</p>;
+
+  if (error) return <ErrorPage />;
 
   return (
     <Layout>
