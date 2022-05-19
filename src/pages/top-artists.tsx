@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import useSWR from "swr";
 import ArtistCard from "../components/ArtistCard";
 import ErrorPage from "../components/ErrorPage";
+import Loading from "../components/Loading";
 import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Layout from "../layout";
@@ -16,17 +17,19 @@ const TopArtists: NextPage = () => {
     fetcher
   );
 
-  if (isValidating) return <p>Loading...</p>;
-
   if (error) return <ErrorPage />;
 
   return (
     <Layout>
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-        {data?.items.map((artist, idx) => (
-          <ArtistCard key={artist.id} artist={artist} ranking={idx + 1} />
-        ))}
-      </div>
+      {data && (
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+          {data.items.map((artist, idx) => (
+            <ArtistCard key={artist.id} artist={artist} ranking={idx + 1} />
+          ))}
+        </div>
+      )}
+
+      {isValidating && <Loading />}
 
       <div className="grid place-items-center">
         <button
