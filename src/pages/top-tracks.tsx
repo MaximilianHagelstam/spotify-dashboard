@@ -7,6 +7,7 @@ import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
 import Layout from "../layout";
 import { getTopTracks } from "../lib/api";
+import classNames from "../lib/classNames";
 
 const TopTracks: NextPage = () => {
   const LOAD_MORE_LIMIT = 8;
@@ -16,26 +17,51 @@ const TopTracks: NextPage = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(0);
+  const [timeRange, setTimeRange] = useState<
+    "short_term" | "medium_term" | "long_term"
+  >("short_term");
   const [hasMore, setHasMore] = useState(true);
+
+  const loadMore = async () => {
+    try {
+      setLoading(true);
+      const newOffset = offset + LOAD_MORE_LIMIT;
+
+      const newTracks = await getTopTracks(
+        token,
+        timeRange,
+        LOAD_MORE_LIMIT,
+        newOffset
+      );
+
+      setOffset(newOffset);
+
+      if (newTracks.length === 0) {
+        setHasMore(false);
+        setLoading(false);
+        return;
+      }
+
+      setTracks([...tracks, ...newTracks]);
+      setLoading(false);
+    } catch (err) {
+      setError(true);
+    }
+  };
 
   useEffect(() => {
     const fetchTracks = async () => {
       try {
-        setLoading(true);
         const topTracks = await getTopTracks(
           token,
-          "short_term",
+          timeRange,
           LOAD_MORE_LIMIT,
-          offset
+          0
         );
 
-        if (topTracks.length === 0) {
-          setHasMore(false);
-          setLoading(false);
-          return;
-        }
-
-        setTracks([...tracks, ...topTracks]);
+        setOffset(0);
+        setHasMore(true);
+        setTracks(topTracks);
         setLoading(false);
       } catch (err) {
         setError(true);
@@ -44,12 +70,61 @@ const TopTracks: NextPage = () => {
 
     fetchTracks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [offset]);
+  }, [timeRange]);
 
   if (error) return <ErrorPage />;
 
   return (
     <Layout>
+      <div>
+        <button
+          disabled={loading}
+          onClick={() => {
+            setTimeRange("short_term");
+          }}
+          className={classNames(
+            timeRange === "short_term" ? "bg-white text-black" : "text-white",
+            "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black"
+          )}
+        >
+          Short Term
+        </button>
+        <button
+          disabled={loading}
+          onClick={() => {
+            setTimeRange("medium_term");
+          }}
+          className={classNames(
+            timeRange === "medium_term" ? "bg-white text-black" : "text-white",
+            "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
+          )}
+        >
+          Medium Term
+        </button>
+        <button
+          disabled={loading}
+          onClick={() => {
+            setTimeRange("long_term");
+          }}
+          className={classNames(
+            timeRange === "long_term" ? "bg-white text-black" : "text-white",
+            "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
+          )}
+        >
+          Long Term
+        </button>
+
+        <span className="ml-8 text-grey-text text-lg">
+          {timeRange === "short_term"
+            ? "Last 4 weeks"
+            : timeRange === "medium_term"
+            ? "Last 6 months"
+            : timeRange === "long_term"
+            ? "Last several years"
+            : ""}
+        </span>
+      </div>
+
       {tracks && (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
           {tracks.map((track, idx) => (
@@ -63,9 +138,7 @@ const TopTracks: NextPage = () => {
       {hasMore && (
         <div className="grid place-items-center">
           <button
-            onClick={() => {
-              setOffset(offset + LOAD_MORE_LIMIT);
-            }}
+            onClick={() => loadMore()}
             disabled={loading}
             className="bg-white text-black font-bold py-2 px-6 rounded-full mb-8 hover:scale-105"
           >
