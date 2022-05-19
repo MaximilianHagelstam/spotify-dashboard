@@ -5,7 +5,7 @@
 # Spotify Dashboard
 
 <a href="https://spotify-dashboard-demo.vercel.app">
-  <img src="screenshot.png" alt="screenshot" width="700"/>
+  <img src="screenshot.png" alt="screenshot" width="800"/>
 </a>
 
 ## Prerequisites
