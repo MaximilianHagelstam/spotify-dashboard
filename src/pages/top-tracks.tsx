@@ -12,7 +12,10 @@ const TopTracks: NextPage = () => {
 
   const { data, isValidating, error } = useSWR<{
     items: Track[];
-  }>(`https://api.spotify.com/v1/me/top/tracks?time_range=short_term`, fetcher);
+  }>(
+    `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50`,
+    fetcher
+  );
 
   if (error) return <ErrorPage />;
 
@@ -30,7 +33,7 @@ const TopTracks: NextPage = () => {
 
       <div className="grid place-items-center">
         <button
-          disabled={isValidating}
+          disabled={!isValidating}
           className="bg-white text-black font-bold py-2 px-6 rounded-full my-8 hover:scale-105"
         >
           {isValidating ? "Loading..." : "Load More"}

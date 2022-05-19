@@ -13,7 +13,7 @@ const TopArtists: NextPage = () => {
   const { data, isValidating, error } = useSWR<{
     items: Artist[];
   }>(
-    `https://api.spotify.com/v1/me/top/artists?time_range=short_term`,
+    `https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=40`,
     fetcher
   );
 

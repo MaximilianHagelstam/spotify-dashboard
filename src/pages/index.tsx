@@ -40,7 +40,20 @@ const Login: NextPage = () => {
     }
   }, [router, isAuth]);
 
-  return <a href={LOGIN_URL}>Login to Spotify</a>;
+  return (
+    <div className="flex h-screen text-center">
+      <div className="m-auto">
+        <button
+          onClick={() => {
+            router.push(LOGIN_URL);
+          }}
+          className="bg-green-dark text-black font-bold py-4 px-8 rounded-full mt-8 hover:bg-green-light hover:scale-105"
+        >
+          Login to Spotify
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
