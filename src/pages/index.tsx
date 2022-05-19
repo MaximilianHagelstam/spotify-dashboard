@@ -47,7 +47,7 @@ const Login: NextPage = () => {
           onClick={() => {
             router.push(LOGIN_URL);
           }}
-          className="bg-green-dark text-black font-bold py-4 px-8 rounded-full mt-8 hover:bg-green-light hover:scale-105"
+          className="bg-green-dark text-black font-bold text-lg py-4 px-8 rounded-full hover:scale-105 hover:bg-green-light"
         >
           Login to Spotify
         </button>
