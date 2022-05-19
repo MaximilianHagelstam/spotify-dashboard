@@ -3,7 +3,7 @@ const Loading = () => {
     <div className="grid place-items-center">
       <svg
         role="status"
-        className="w-8 h-8 text-grey-light animate-spin fill-white"
+        className="w-8 h-8 text-grey-light animate-spin fill-white mb-4"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
