@@ -1,44 +1,78 @@
 import type { NextPage } from "next";
-import useSWR from "swr";
+import { useEffect, useState } from "react";
 import ErrorPage from "../components/ErrorPage";
 import Loading from "../components/Loading";
 import TrackCard from "../components/TrackCard";
 import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
 import Layout from "../layout";
+import { getTopTracks } from "../lib/api";
 
 const TopTracks: NextPage = () => {
-  const { fetcher } = useAuth();
+  const LOAD_MORE_LIMIT = 8;
 
-  const { data, isValidating, error } = useSWR<{
-    items: Track[];
-  }>(
-    `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50`,
-    fetcher
-  );
+  const { token } = useAuth();
+  const [tracks, setTracks] = useState<Track[]>([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    const fetchTracks = async () => {
+      try {
+        setLoading(true);
+        const topTracks = await getTopTracks(
+          token,
+          "short_term",
+          LOAD_MORE_LIMIT,
+          offset
+        );
+
+        if (topTracks.length === 0) {
+          setHasMore(false);
+          setLoading(false);
+          return;
+        }
+
+        setTracks([...tracks, ...topTracks]);
+        setLoading(false);
+      } catch (err) {
+        setError(true);
+      }
+    };
+
+    fetchTracks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offset]);
 
   if (error) return <ErrorPage />;
 
   return (
     <Layout>
-      {data && (
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-          {data.items.map((track, idx) => (
+      {tracks && (
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
+          {tracks.map((track, idx) => (
             <TrackCard key={track.id} track={track} ranking={idx + 1} />
           ))}
         </div>
       )}
 
-      {isValidating && <Loading />}
+      {loading && <Loading />}
 
-      <div className="grid place-items-center">
-        <button
-          disabled={!isValidating}
-          className="bg-white text-black font-bold py-2 px-6 rounded-full my-8 hover:scale-105"
-        >
-          {isValidating ? "Loading..." : "Load More"}
-        </button>
-      </div>
+      {hasMore && (
+        <div className="grid place-items-center">
+          <button
+            onClick={() => {
+              setOffset(offset + LOAD_MORE_LIMIT);
+            }}
+            disabled={loading}
+            className="bg-white text-black font-bold py-2 px-6 rounded-full mb-8 hover:scale-105"
+          >
+            {loading ? "Loading..." : "Load More"}
+          </button>
+        </div>
+      )}
     </Layout>
   );
 };
