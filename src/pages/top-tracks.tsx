@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import Card from "../components/Card";
 import ErrorPage from "../components/ErrorPage";
 import Loading from "../components/Loading";
-import TrackCard from "../components/TrackCard";
 import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
 import Layout from "../layout";
@@ -87,7 +87,7 @@ const TopTracks: NextPage = () => {
             "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black"
           )}
         >
-          Short Term
+          Short
         </button>
         <button
           disabled={loading}
@@ -99,7 +99,7 @@ const TopTracks: NextPage = () => {
             "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
           )}
         >
-          Medium Term
+          Medium
         </button>
         <button
           disabled={loading}
@@ -111,10 +111,10 @@ const TopTracks: NextPage = () => {
             "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
           )}
         >
-          Long Term
+          Long
         </button>
 
-        <span className="text-grey-text text-lg flex justify-center mb-4 md:ml-8 md:mb-0 md:inline">
+        <span className="text-gray-text text-lg flex justify-center mb-4 md:ml-8 md:mb-0 md:inline">
           {timeRange === "short_term"
             ? "Last 4 weeks"
             : timeRange === "medium_term"
@@ -128,7 +128,7 @@ const TopTracks: NextPage = () => {
       {tracks && (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
           {tracks.map((track, idx) => (
-            <TrackCard key={track.id} track={track} ranking={idx + 1} />
+            <Card key={track.id} track={track} ranking={idx + 1} />
           ))}
         </div>
       )}

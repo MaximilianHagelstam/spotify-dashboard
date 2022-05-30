@@ -11,10 +11,10 @@ module.exports = {
     colors: {
       white: "#ffffff",
       black: "#000000",
-      grey: {
-        dark: "#121212",
-        medium: "#181818",
-        light: "#282828",
+      gray: {
+        background: "#121212",
+        accent: "#181818",
+        hover: "#282828",
         text: "#949494",
       },
       green: {
