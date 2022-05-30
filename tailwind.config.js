@@ -12,9 +12,9 @@ module.exports = {
       white: "#ffffff",
       black: "#000000",
       gray: {
-        dark: "#121212",
-        medium: "#181818",
-        light: "#282828",
+        background: "#121212",
+        accent: "#181818",
+        hover: "#282828",
         text: "#949494",
       },
       green: {

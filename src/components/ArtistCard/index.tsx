@@ -14,7 +14,7 @@ const ArtistCard = ({ artist, ranking }: ArtistCardProps) => {
   return (
     <a
       href={artist.external_urls.spotify}
-      className="bg-gray-medium hover:bg-gray-light px-4 py-4 rounded-xl"
+      className="bg-gray-accent hover:bg-gray-hover px-4 py-4 rounded-xl"
     >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl shadow-lg">
         <Image
