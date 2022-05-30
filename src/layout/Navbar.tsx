@@ -31,7 +31,7 @@ const Navbar = () => {
                         className={classNames(
                           router.pathname === link.href
                             ? "font-bold"
-                            : "text-grey-text hover:text-white transition ease-in-out",
+                            : "text-gray-text hover:text-white transition ease-in-out",
                           "px-3 text-sm"
                         )}
                       >
@@ -71,7 +71,7 @@ const Navbar = () => {
                   className={classNames(
                     router.pathname === link.href
                       ? "font-bold"
-                      : "text-grey-text hover:text-white transition ease-in-out",
+                      : "text-gray-text hover:text-white transition ease-in-out",
                     "px-3 text-sm"
                   )}
                 >
@@ -79,7 +79,7 @@ const Navbar = () => {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="border-t border-grey-light">
+            <div className="border-t border-gray-light">
               <div className="block px-3 py-2 my-1">
                 <LogoutButton />
               </div>

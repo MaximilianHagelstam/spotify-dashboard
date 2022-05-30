@@ -114,7 +114,7 @@ const TopTracks: NextPage = () => {
           Long Term
         </button>
 
-        <span className="text-grey-text text-lg flex justify-center mb-4 md:ml-8 md:mb-0 md:inline">
+        <span className="text-gray-text text-lg flex justify-center mb-4 md:ml-8 md:mb-0 md:inline">
           {timeRange === "short_term"
             ? "Last 4 weeks"
             : timeRange === "medium_term"

@@ -14,7 +14,7 @@ const ArtistCard = ({ artist, ranking }: ArtistCardProps) => {
   return (
     <a
       href={artist.external_urls.spotify}
-      className="bg-grey-medium hover:bg-grey-light px-4 py-4 rounded-xl"
+      className="bg-gray-medium hover:bg-gray-light px-4 py-4 rounded-xl"
     >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl shadow-lg">
         <Image
@@ -32,7 +32,7 @@ const ArtistCard = ({ artist, ranking }: ArtistCardProps) => {
         />
       </div>
 
-      <h3 className="mt-4 text-sm text-grey-text">
+      <h3 className="mt-4 text-sm text-gray-text">
         {artist.genres.slice(0, 3).join(", ")}
       </h3>
       <p className="mt-1 text-lg">

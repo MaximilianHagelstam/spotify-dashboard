@@ -14,7 +14,7 @@ const TrackCard = ({ track, ranking }: TrackCardProps) => {
   return (
     <a
       href={track.external_urls.spotify}
-      className="bg-grey-medium hover:bg-grey-light px-4 py-4 rounded-xl"
+      className="bg-gray-medium hover:bg-gray-light px-4 py-4 rounded-xl"
     >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-xl shadow-lg">
         <Image
@@ -32,7 +32,7 @@ const TrackCard = ({ track, ranking }: TrackCardProps) => {
         />
       </div>
 
-      <h3 className="mt-4 text-sm text-grey-text">
+      <h3 className="mt-4 text-sm text-gray-text">
         {track.artists.map((artist) => artist.name).join(", ")}
       </h3>
       <p className="mt-1 text-lg">
