@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import ArtistCard from "../components/ArtistCard";
+import Card from "../components/Card";
 import ErrorPage from "../components/ErrorPage";
 import Loading from "../components/Loading";
 import useAuth from "../hooks/useAuth";
@@ -87,7 +87,7 @@ const TopArtists: NextPage = () => {
             "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black"
           )}
         >
-          Short Term
+          Short
         </button>
         <button
           disabled={loading}
@@ -99,7 +99,7 @@ const TopArtists: NextPage = () => {
             "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
           )}
         >
-          Medium Term
+          Medium
         </button>
         <button
           disabled={loading}
@@ -111,7 +111,7 @@ const TopArtists: NextPage = () => {
             "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
           )}
         >
-          Long Term
+          Long
         </button>
 
         <span className="text-gray-text text-lg flex justify-center mb-4 md:ml-8 md:mb-0 md:inline">
@@ -128,7 +128,7 @@ const TopArtists: NextPage = () => {
       {artists && (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
           {artists.map((artist, idx) => (
-            <ArtistCard key={artist.id} artist={artist} ranking={idx + 1} />
+            <Card key={artist.id} artist={artist} ranking={idx + 1} />
           ))}
         </div>
       )}
