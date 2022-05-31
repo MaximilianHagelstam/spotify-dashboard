@@ -1,10 +1,11 @@
 import useSWRInfinite from "swr/infinite";
+import TimeRange from "../interfaces/TimeRange";
 import useAuth from "./useAuth";
 
 const usePagination = <T>(
   url: string,
   pageSize: number,
-  timeRange: "short_term" | "medium_term" | "long_term"
+  timeRange: TimeRange
 ) => {
   const { fetcher } = useAuth();
 

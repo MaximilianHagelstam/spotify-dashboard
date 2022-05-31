@@ -1,14 +1,18 @@
 import type { NextPage } from "next";
+import { useState } from "react";
 import Card from "../components/Card";
 import ErrorPage from "../components/ErrorPage";
 import Loading from "../components/Loading";
+import TimeRangeSelector from "../components/TimeRangeSelector";
 import usePagination from "../hooks/usePagination";
+import TimeRange from "../interfaces/TimeRange";
 import Track from "../interfaces/Track";
 import Layout from "../layout";
 
 const TopTracks: NextPage = () => {
   const LOAD_MORE_LIMIT = 8;
 
+  const [timeRange, setTimeRange] = useState<TimeRange>("short_term");
   const {
     data: tracks,
     isError,
@@ -19,13 +23,18 @@ const TopTracks: NextPage = () => {
   } = usePagination<Track>(
     "https://api.spotify.com/v1/me/top/tracks",
     LOAD_MORE_LIMIT,
-    "short_term"
+    timeRange
   );
 
   if (isError) return <ErrorPage />;
 
   return (
     <Layout>
+      <TimeRangeSelector
+        currentTimeRange={timeRange}
+        handleTimeRange={setTimeRange}
+      />
+
       {tracks && (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
           {tracks.map((track, idx) => (
