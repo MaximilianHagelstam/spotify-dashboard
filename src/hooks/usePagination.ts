@@ -20,14 +20,15 @@ const usePagination = <T>(
     getKey,
     fetcher
   );
+  const isError = error !== undefined;
 
   const paginatedData = data?.flat();
   const isReachedEnd = data && data[data.length - 1].length < pageSize;
 
   return {
     data: paginatedData,
-    loading: isValidating,
-    error,
+    isLoading: isValidating,
+    isError,
     size,
     setSize,
     isReachedEnd,

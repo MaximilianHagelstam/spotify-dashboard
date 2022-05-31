@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Layout from "../layout";
 import { getTopArtists } from "../lib/api";
-import classNames from "../lib/classNames";
+import { classNames } from "../lib/helpers";
 
 const TopArtists: NextPage = () => {
   const LOAD_MORE_LIMIT = 8;

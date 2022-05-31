@@ -11,8 +11,8 @@ const TopTracks: NextPage = () => {
 
   const {
     data: tracks,
-    error,
-    loading,
+    isError,
+    isLoading,
     size,
     setSize,
     isReachedEnd,
@@ -22,7 +22,7 @@ const TopTracks: NextPage = () => {
     "short_term"
   );
 
-  if (error) return <ErrorPage />;
+  if (isError) return <ErrorPage />;
 
   return (
     <Layout>
@@ -34,16 +34,16 @@ const TopTracks: NextPage = () => {
         </div>
       )}
 
-      {loading && <Loading />}
+      {isLoading && <Loading />}
 
-      {!isReachedEnd && !loading && (
+      {!isReachedEnd && !isLoading && (
         <div className="grid place-items-center">
           <button
             onClick={() => setSize(size + 1)}
-            disabled={loading}
+            disabled={isLoading}
             className="bg-white text-black font-bold py-2 px-6 rounded-full mb-8 hover:scale-105"
           >
-            {loading ? "Loading..." : "Load More"}
+            Load More
           </button>
         </div>
       )}
