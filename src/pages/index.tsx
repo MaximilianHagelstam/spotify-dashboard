@@ -41,15 +41,20 @@ const Login: NextPage = () => {
   }, [router, isAuth]);
 
   return (
-    <div className="flex h-screen text-center">
+    <div className="flex h-screen text-center mx-2">
       <div className="m-auto">
+        <h1 className="text-7xl font-bold mb-8">Welcome!</h1>
+        <p className="font-light mb-12">
+          Don&lsquo;t wait till New Year&lsquo;s for Spotify Wrapped, get all
+          the data you need now!
+        </p>
         <button
           onClick={() => {
             router.push(LOGIN_URL);
           }}
-          className="bg-green-dark text-black font-bold text-lg py-4 px-8 rounded-full hover:scale-105 hover:bg-green-light"
+          className="bg-green-dark text-black text-lg font-bold py-4 px-16 rounded-full hover:scale-105"
         >
-          Login to Spotify
+          Get Started
         </button>
       </div>
     </div>
