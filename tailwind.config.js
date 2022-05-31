@@ -17,10 +17,7 @@ module.exports = {
         hover: "#282828",
         text: "#949494",
       },
-      green: {
-        light: "#1fdf64",
-        dark: "#1ed760",
-      },
+      green: "#1ed760",
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],

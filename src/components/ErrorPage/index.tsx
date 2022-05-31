@@ -8,7 +8,7 @@ const ErrorPage = () => {
   return (
     <div className="flex h-screen text-center">
       <div className="m-auto">
-        <Image height={64} width={64} src="/logo.png" alt="Spotify Logo" />
+        <Image height={64} width={64} src="/logo.png" alt="Logo" />
         <h1 className="text-5xl font-bold mt-12">Oops</h1>
         <p className="font-light mt-4">There was an error loading this page.</p>
         <button
