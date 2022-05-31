@@ -20,7 +20,7 @@ const Card = ({ track, artist, ranking }: CardProps) => {
     >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg shadow-lg">
         <Image
-          alt={track?.name ?? artist?.name}
+          alt="Cover"
           src={
             track?.album.images[0].url ??
             artist?.images[0].url ??

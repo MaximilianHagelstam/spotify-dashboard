@@ -43,7 +43,7 @@ const Login: NextPage = () => {
   return (
     <div className="flex h-screen text-center mx-2">
       <div className="m-auto">
-        <h1 className="text-7xl font-bold mb-8">Welcome!</h1>
+        <h1 className="text-7xl font-bold mb-8">Welcome</h1>
         <p className="font-light mb-12">
           Don&lsquo;t wait till New Year&lsquo;s for Spotify Wrapped, get all
           the data you need now!

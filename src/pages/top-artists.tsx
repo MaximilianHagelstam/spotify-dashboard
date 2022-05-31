@@ -10,8 +10,6 @@ import TimeRange from "../interfaces/TimeRange";
 import Layout from "../layout";
 
 const TopArtists: NextPage = () => {
-  const LOAD_MORE_LIMIT = 8;
-
   const [timeRange, setTimeRange] = useState<TimeRange>("short_term");
   const {
     data: artists,
@@ -22,7 +20,7 @@ const TopArtists: NextPage = () => {
     isReachedEnd,
   } = usePagination<Artist>(
     "https://api.spotify.com/v1/me/top/artists",
-    LOAD_MORE_LIMIT,
+    8,
     timeRange
   );
 

@@ -10,8 +10,6 @@ import Track from "../interfaces/Track";
 import Layout from "../layout";
 
 const TopTracks: NextPage = () => {
-  const LOAD_MORE_LIMIT = 8;
-
   const [timeRange, setTimeRange] = useState<TimeRange>("short_term");
   const {
     data: tracks,
@@ -22,7 +20,7 @@ const TopTracks: NextPage = () => {
     isReachedEnd,
   } = usePagination<Track>(
     "https://api.spotify.com/v1/me/top/tracks",
-    LOAD_MORE_LIMIT,
+    8,
     timeRange
   );
 
