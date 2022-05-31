@@ -52,7 +52,7 @@ const Login: NextPage = () => {
           onClick={() => {
             router.push(LOGIN_URL);
           }}
-          className="bg-green-dark text-black text-lg font-bold py-4 px-16 rounded-full hover:scale-105"
+          className="bg-green text-white text-lg font-bold py-4 px-16 rounded-full hover:scale-105"
         >
           Get Started
         </button>

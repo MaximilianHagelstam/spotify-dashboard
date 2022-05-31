@@ -39,14 +39,14 @@ const Card = ({ track, artist, ranking }: CardProps) => {
       </div>
 
       <p className="mt-4 text-lg">
-        {ranking}. {formatTripleDot(track?.name ?? artist?.name ?? "", 18)}
+        {ranking}. {formatTripleDot(track?.name ?? artist?.name ?? "", 20)}
       </p>
       <h3 className="mt-1 text-gray-text">
         {formatTripleDot(
           track?.artists.map((trackArtist) => trackArtist.name).join(", ") ??
             artist?.genres[0] ??
             "",
-          22
+          30
         )}
       </h3>
     </a>

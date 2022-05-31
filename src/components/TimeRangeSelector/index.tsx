@@ -11,15 +11,18 @@ const TimeRangeSelector = ({
   currentTimeRange,
   handleTimeRange,
 }: TimeRangeSelectorProps) => {
+  const selectedStyle = "bg-white text-black hover:bg-white hover:text-black";
+  const notSelectedStyle = "text-white hover:bg-[#333333]";
+  const commonStyle =
+    "border-white border-2 font-bold py-2 px-6 rounded-full mb-8";
+
   return (
     <>
       <button
         onClick={() => handleTimeRange("short_term")}
         className={classNames(
-          currentTimeRange === "short_term"
-            ? "bg-white text-black"
-            : "text-white",
-          "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black"
+          currentTimeRange === "short_term" ? selectedStyle : notSelectedStyle,
+          commonStyle
         )}
       >
         Short
@@ -27,10 +30,8 @@ const TimeRangeSelector = ({
       <button
         onClick={() => handleTimeRange("medium_term")}
         className={classNames(
-          currentTimeRange === "medium_term"
-            ? "bg-white text-black"
-            : "text-white",
-          "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
+          currentTimeRange === "medium_term" ? selectedStyle : notSelectedStyle,
+          `${commonStyle} ml-4`
         )}
       >
         Medium
@@ -38,10 +39,8 @@ const TimeRangeSelector = ({
       <button
         onClick={() => handleTimeRange("long_term")}
         className={classNames(
-          currentTimeRange === "long_term"
-            ? "bg-white text-black"
-            : "text-white",
-          "border-white border-2 font-bold py-2 px-6 rounded-full mb-8 hover:bg-white hover:text-black ml-4"
+          currentTimeRange === "long_term" ? selectedStyle : notSelectedStyle,
+          `${commonStyle} ml-4`
         )}
       >
         Long
