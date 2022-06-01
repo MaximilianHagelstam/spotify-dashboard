@@ -18,7 +18,7 @@ const Login: NextPage = () => {
 
   useEffect(() => {
     if (isAuth) {
-      router.push("/top-tracks");
+      router.push("/dashboard");
     }
 
     const { hash } = window.location;
@@ -36,7 +36,7 @@ const Login: NextPage = () => {
       setCookies("token", token);
 
       router.reload();
-      router.push("/top-tracks");
+      router.push("/dashboard");
     }
   }, [router, isAuth]);
 

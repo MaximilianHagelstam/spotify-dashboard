@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import useSWR from "swr";
 import Card from "../components/Card";
+import CardGrid from "../components/CardGrid";
 import ErrorPage from "../components/ErrorPage";
 import Loading from "../components/Loading";
 import useAuth from "../hooks/useAuth";
@@ -20,11 +21,11 @@ const RecentlyPlayed: NextPage = () => {
   return (
     <Layout>
       {data && (
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
+        <CardGrid>
           {data.map((item, idx) => (
             <Card key={idx} track={item.track} ranking={idx + 1} />
           ))}
-        </div>
+        </CardGrid>
       )}
 
       {isValidating && <Loading />}

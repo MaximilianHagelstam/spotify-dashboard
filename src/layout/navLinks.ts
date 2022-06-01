@@ -4,6 +4,7 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
+  { name: "Dashboard", href: "/dashboard" },
   { name: "Top Tracks", href: "/top-tracks" },
   { name: "Top Artists", href: "/top-artists" },
   { name: "Recently played", href: "/recently-played" },
