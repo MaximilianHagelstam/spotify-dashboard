@@ -62,21 +62,22 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className=" pl-4 pt-2 inline-block">
               {navLinks.map((link) => (
-                <Disclosure.Button
-                  key={link.name}
-                  as="a"
-                  href={link.href}
-                  className={classNames(
-                    router.pathname === link.href
-                      ? "font-bold"
-                      : "text-gray-text hover:text-white transition ease-in-out",
-                    "px-3 text-sm"
-                  )}
-                >
-                  {link.name}
-                </Disclosure.Button>
+                <div key={link.name} className="mb-3">
+                  <Disclosure.Button
+                    as="a"
+                    href={link.href}
+                    className={classNames(
+                      router.pathname === link.href
+                        ? "font-bold"
+                        : "text-gray-text hover:text-white transition ease-in-out",
+                      "text-sm"
+                    )}
+                  >
+                    {link.name}
+                  </Disclosure.Button>
+                </div>
               ))}
             </div>
             <div className="border-t border-gray-hover">

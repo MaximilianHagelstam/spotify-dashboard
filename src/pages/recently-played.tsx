@@ -22,7 +22,7 @@ const RecentlyPlayed: NextPage = () => {
       {data && (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
           {data.map((item, idx) => (
-            <Card key={item.track.id} track={item.track} ranking={idx + 1} />
+            <Card key={idx} track={item.track} ranking={idx + 1} />
           ))}
         </div>
       )}
