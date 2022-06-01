@@ -14,7 +14,7 @@ const TimeRangeSelector = ({
   const selectedStyle = "bg-white text-black hover:bg-white hover:text-black";
   const notSelectedStyle = "text-white hover:bg-[#333333]";
   const commonStyle =
-    "border-white border-2 font-bold py-2 px-6 rounded-full mb-8";
+    "border-white border-2 font-bold py-2 px-4 text-sm rounded-full mb-8";
 
   return (
     <>
@@ -25,7 +25,7 @@ const TimeRangeSelector = ({
           commonStyle
         )}
       >
-        Short
+        Month
       </button>
       <button
         onClick={() => handleTimeRange("medium_term")}
@@ -34,7 +34,7 @@ const TimeRangeSelector = ({
           `${commonStyle} ml-4`
         )}
       >
-        Medium
+        6 months
       </button>
       <button
         onClick={() => handleTimeRange("long_term")}
@@ -43,18 +43,8 @@ const TimeRangeSelector = ({
           `${commonStyle} ml-4`
         )}
       >
-        Long
+        All time
       </button>
-
-      <span className="text-gray-text text-lg flex justify-center mb-4 md:ml-8 md:mb-0 md:inline">
-        {currentTimeRange === "short_term"
-          ? "Last 4 weeks"
-          : currentTimeRange === "medium_term"
-          ? "Last 6 months"
-          : currentTimeRange === "long_term"
-          ? "Last several years"
-          : ""}
-      </span>
     </>
   );
 };
