@@ -11,7 +11,7 @@ const CardRow = ({ title, href, children }: CardRowProps) => {
     <div className="mb-12">
       <div className="flex justify-between items-center mb-4 px-2 sm:px-4 lg:px-0">
         <h2 className="text-xl font-bold">{title}</h2>
-        <div className="text-gray-text hover:text-white">
+        <div className="text-gray-text hover:text-white transition ease-in-out">
           <Link href={href}>See more</Link>
         </div>
       </div>
