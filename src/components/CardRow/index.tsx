@@ -17,9 +17,7 @@ const CardRow = ({ title, href, children }: CardRowProps) => {
           <Link href={href}>See more</Link>
         </div>
       </div>
-      <div className="grid grid-cols-5-overflow lg:grid-cols-5 grid-flow-row gap-x-2 sm:gap-x-4 overflow-x-scroll md:overflow-auto">
-        {children}
-      </div>
+      <div className="grid grid-cols-5 grid-flow-row gap-x-4">{children}</div>
     </div>
   );
 };
