@@ -9,7 +9,7 @@ interface CardRowProps {
 const CardRow = ({ title, href, children }: CardRowProps) => {
   return (
     <div className="mb-12">
-      <div className="flex justify-between items-center mb-4 px-2 sm:px-4 lg:px-0">
+      <div className="flex justify-between items-center mb-4">
         <div className="text-xl font-bold hover:underline">
           <Link href={href}>{title}</Link>
         </div>

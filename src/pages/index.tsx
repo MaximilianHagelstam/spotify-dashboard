@@ -3,6 +3,7 @@ import useSWR from "swr";
 import Card from "../components/Card";
 import CardRow from "../components/CardRow";
 import ErrorPage from "../components/ErrorPage";
+import RecentlyPlayedTable from "../components/RecentlyPlayedTable";
 import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Track from "../interfaces/Track";
@@ -21,10 +22,12 @@ const Dashboard: NextPage = () => {
     fetcher
   );
 
-  const { error: recentError } = useSWR<{ track: Track }[]>(
+  const { data: recentData, error: recentError } = useSWR<{ track: Track }[]>(
     "https://api.spotify.com/v1/me/player/recently-played?limit=10",
     fetcher
   );
+
+  const recentTracks = recentData?.map((item) => item.track);
 
   if (
     trackError !== undefined ||
@@ -46,6 +49,14 @@ const Dashboard: NextPage = () => {
           <Card key={artist.id} ranking={idx + 1} artist={artist} />
         ))}
       </CardRow>
+
+      {recentTracks && (
+        <RecentlyPlayedTable
+          title="Recently Played"
+          href="/recently-played"
+          tracks={recentTracks}
+        />
+      )}
     </Layout>
   );
 };
