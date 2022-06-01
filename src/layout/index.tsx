@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   useEffect(() => {
     if (!isAuth) {
-      router.push("/");
+      router.push("/login");
     }
   }, [router, isAuth]);
 

@@ -1,6 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "../lib/classNames";
 import LogoutButton from "./LogoutButton";
@@ -16,12 +17,15 @@ const Navbar = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
-                <Image
-                  height={32}
-                  width={32}
-                  src="/logo.png"
-                  alt="Spotify Dashboard"
-                />
+                <Link href="/" passHref>
+                  <Image
+                    height={32}
+                    width={32}
+                    src="/logo.png"
+                    alt="Logo"
+                    className="cursor-pointer"
+                  />
+                </Link>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navLinks.map((link) => (
