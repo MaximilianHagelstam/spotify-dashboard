@@ -35,13 +35,13 @@ const Dashboard: NextPage = () => {
 
   return (
     <Layout>
-      <CardRow title="Top Tracks" href="top-tracks">
+      <CardRow title="Top Tracks" href="/top-tracks">
         {trackData?.map((track, idx) => (
           <Card key={track.id} ranking={idx + 1} track={track} />
         ))}
       </CardRow>
 
-      <CardRow title="Top Artists" href="top-artists">
+      <CardRow title="Top Artists" href="/top-artists">
         {artistData?.map((artist, idx) => (
           <Card key={artist.id} ranking={idx + 1} artist={artist} />
         ))}
