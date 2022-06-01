@@ -18,7 +18,7 @@ const TrackRow = ({ track, ranking }: TrackRowProps) => {
         </div>
         <div className="w-12/12 lg:w-7/12 truncate">
           <div className="w-full flex items-start truncate overflow-hidden">
-            <div className="hidden sm:block sm:w-12 sm:h-12 overflow-hidden rounded-full">
+            <div className="w-12 h-12 ml-2 sm:ml-0 overflow-hidden rounded-full">
               <Image
                 src={track.album.images[0].url}
                 width={48}
@@ -27,7 +27,7 @@ const TrackRow = ({ track, ranking }: TrackRowProps) => {
               />
             </div>
             <div className="ml-4 truncate mt-auto mb-auto">
-              <h4 className="truncate">{track.name}</h4>
+              <h4 className="truncate mr-4">{track.name}</h4>
               <h3 className="text-sm text-gray-text truncate">
                 {track.artists[0].name}
               </h3>
