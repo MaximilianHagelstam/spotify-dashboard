@@ -18,7 +18,7 @@ const TrackRow = ({ track, ranking }: TrackRowProps) => {
         </div>
         <div className="w-12/12 lg:w-7/12 truncate">
           <div className="w-full flex items-start truncate overflow-hidden">
-            <div className="w-12 h-12 ml-2 sm:ml-0 overflow-hidden rounded-full">
+            <div className="w-12 h-12 ml-2 lg:ml-0 overflow-hidden rounded-full">
               <Image
                 src={track.album.images[0].url}
                 width={48}
