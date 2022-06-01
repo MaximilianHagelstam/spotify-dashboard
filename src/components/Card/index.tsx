@@ -3,7 +3,6 @@ import { useState } from "react";
 import Artist from "../../interfaces/Artist";
 import Track from "../../interfaces/Track";
 import classNames from "../../lib/classNames";
-import formatTripleDot from "../../lib/formatTripleDot";
 
 interface CardProps {
   track?: Track;
@@ -39,16 +38,12 @@ const Card = ({ track, artist, ranking }: CardProps) => {
         />
       </div>
 
-      <p className="mt-4 text-lg">
-        {ranking}. {formatTripleDot(track?.name ?? artist?.name ?? "", 20)}
+      <p className="mt-4 text-lg truncate">
+        {ranking}. {track?.name ?? artist?.name}
       </p>
-      <h3 className="mt-1 text-gray-text">
-        {formatTripleDot(
-          track?.artists.map((trackArtist) => trackArtist.name).join(", ") ??
-            artist?.genres[0] ??
-            "",
-          30
-        )}
+      <h3 className="mt-1 text-gray-text truncate">
+        {track?.artists.map((trackArtist) => trackArtist.name).join(", ") ??
+          artist?.genres[0]}
       </h3>
     </a>
   );
