@@ -10,8 +10,10 @@ const CardRow = ({ title, href, children }: CardRowProps) => {
   return (
     <div className="mb-12">
       <div className="flex justify-between items-center mb-4 px-2 sm:px-4 lg:px-0">
-        <h2 className="text-xl font-bold">{title}</h2>
-        <div className="text-gray-text hover:text-white transition ease-in-out">
+        <div className="text-xl font-bold hover:underline">
+          <Link href={href}>{title}</Link>
+        </div>
+        <div className="text-gray-text hover:underline">
           <Link href={href}>See more</Link>
         </div>
       </div>

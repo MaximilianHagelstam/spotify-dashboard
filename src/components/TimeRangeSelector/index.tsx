@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import TimeRange from "../../interfaces/TimeRange";
-import { classNames } from "../../lib/helpers";
+import classNames from "../../lib/classNames";
 
 interface TimeRangeSelectorProps {
   currentTimeRange: TimeRange;

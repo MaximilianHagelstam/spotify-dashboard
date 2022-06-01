@@ -2,7 +2,8 @@ import Image from "next/image";
 import { useState } from "react";
 import Artist from "../../interfaces/Artist";
 import Track from "../../interfaces/Track";
-import { classNames, formatTripleDot } from "../../lib/helpers";
+import classNames from "../../lib/classNames";
+import formatTripleDot from "../../lib/formatTripleDot";
 
 interface CardProps {
   track?: Track;

@@ -2,7 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { classNames } from "../lib/helpers";
+import classNames from "../lib/classNames";
 import LogoutButton from "./LogoutButton";
 import navLinks from "./navLinks";
 
