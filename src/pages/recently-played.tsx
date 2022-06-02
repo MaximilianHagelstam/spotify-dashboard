@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import useSWR from "swr";
-import Card from "../components/Card";
 import CardGrid from "../components/CardGrid";
 import ErrorPage from "../components/ErrorPage";
 import Spinner from "../components/Spinner";
@@ -16,17 +15,13 @@ const RecentlyPlayed: NextPage = () => {
     fetcher
   );
 
+  const recentTracks = data?.map((item) => item.track);
+
   if (error !== undefined) return <ErrorPage />;
 
   return (
     <Layout>
-      {data && (
-        <CardGrid>
-          {data.map((item, idx) => (
-            <Card key={idx} track={item.track} ranking={idx + 1} />
-          ))}
-        </CardGrid>
-      )}
+      {data && <CardGrid tracks={recentTracks} />}
 
       {isValidating && <Spinner />}
     </Layout>

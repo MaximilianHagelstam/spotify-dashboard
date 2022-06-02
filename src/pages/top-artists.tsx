@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import Card from "../components/Card";
 import CardGrid from "../components/CardGrid";
 import ErrorPage from "../components/ErrorPage";
 import LoadMoreButton from "../components/LoadMoreButton";
@@ -35,13 +34,7 @@ const TopArtists: NextPage = () => {
         handleTimeRange={setTimeRange}
       />
 
-      {artists && (
-        <CardGrid>
-          {artists.map((artist, idx) => (
-            <Card key={artist.id} artist={artist} ranking={idx + 1} />
-          ))}
-        </CardGrid>
-      )}
+      {artists && <CardGrid artists={artists} />}
 
       {isLoading && <Spinner />}
 
