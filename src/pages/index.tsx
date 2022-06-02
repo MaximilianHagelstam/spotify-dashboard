@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
 import useSWR from "swr";
-import Card from "../components/Card";
 import CardRow from "../components/CardRow";
 import ErrorPage from "../components/ErrorPage";
-import LoadingCard from "../components/LoadingCard";
 import LoadingTrackRow from "../components/LoadingTrackRow";
 import TrackRow from "../components/TrackRow";
 import TrackRowTable from "../components/TrackRowTable";
@@ -51,46 +49,19 @@ const Dashboard: NextPage = () => {
 
   return (
     <Layout>
-      <CardRow title="Top Tracks" href="/top-tracks">
-        {trackLoading ? (
-          <>
-            {Array(5)
-              .fill(1)
-              .map((_, idx) => (
-                <LoadingCard key={idx} />
-              ))}
-          </>
-        ) : (
-          <>
-            {trackData?.map((track, idx) => (
-              <Card key={track.id} ranking={idx + 1} track={track} scrollable />
-            ))}
-          </>
-        )}
-      </CardRow>
+      <CardRow
+        title="Top Tracks"
+        href="/top-tracks"
+        tracks={trackData}
+        loading={trackLoading}
+      />
 
-      <CardRow title="Top Artists" href="/top-artists">
-        {artistLoading ? (
-          <>
-            {Array(5)
-              .fill(1)
-              .map((_, idx) => (
-                <LoadingCard key={idx} />
-              ))}
-          </>
-        ) : (
-          <>
-            {artistData?.map((artist, idx) => (
-              <Card
-                key={artist.id}
-                ranking={idx + 1}
-                artist={artist}
-                scrollable
-              />
-            ))}
-          </>
-        )}
-      </CardRow>
+      <CardRow
+        title="Top Artists"
+        href="/top-artists"
+        artists={artistData}
+        loading={artistLoading}
+      />
 
       <TrackRowTable title="Recently Played" href="/recently-played">
         {recentLoading ? (
