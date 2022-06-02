@@ -7,6 +7,7 @@ interface RecentlyPlayedTableProps {
   href: string;
   tracks: Track[];
 }
+
 const RecentlyPlayedTable = ({
   title,
   href,
@@ -25,7 +26,7 @@ const RecentlyPlayedTable = ({
       <div>
         <div className="flex-col flex">
           {tracks.map((track, idx) => (
-            <TrackRow key={track.id} track={track} ranking={idx + 1} />
+            <TrackRow key={idx} track={track} ranking={idx + 1} />
           ))}
         </div>
       </div>

@@ -6,6 +6,7 @@ interface CardRowProps {
   href: string;
   children: ReactNode;
 }
+
 const CardRow = ({ title, href, children }: CardRowProps) => {
   return (
     <div className="mb-12">

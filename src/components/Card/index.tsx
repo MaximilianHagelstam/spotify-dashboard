@@ -11,7 +11,7 @@ interface CardProps {
 }
 
 const Card = ({ track, artist, ranking }: CardProps) => {
-  const [isLoading, setLoading] = useState(true);
+  const [imageIsLoading, setImageIsLoading] = useState(true);
 
   return (
     <a
@@ -30,11 +30,11 @@ const Card = ({ track, artist, ranking }: CardProps) => {
           objectFit="cover"
           className={classNames(
             "duration-700 ease-in-out",
-            isLoading
+            imageIsLoading
               ? "scale-110 blur-2xl grayscale"
               : "scale-100 blur-0 grayscale-0"
           )}
-          onLoadingComplete={() => setLoading(false)}
+          onLoadingComplete={() => setImageIsLoading(false)}
         />
       </div>
 
