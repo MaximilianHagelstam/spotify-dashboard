@@ -20,7 +20,9 @@ const CardRow = ({ title, href, children }: CardRowProps) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 grid-flow-row gap-x-4">{children}</div>
+      <div className="flex flex-no-wrap space-x-4 overflow-x-auto scrolling-touch items-start lg:pr-16 lg:overflow-x-hidden">
+        {children}
+      </div>
     </div>
   );
 };
