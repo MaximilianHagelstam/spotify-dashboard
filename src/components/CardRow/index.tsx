@@ -31,7 +31,7 @@ const CardRow = ({ title, href, tracks, artists, isLoading }: CardRowProps) => {
             {Array(5)
               .fill(1)
               .map((_, idx) => (
-                <LoadingCard key={idx} />
+                <LoadingCard key={`${idx}-card-loader`} />
               ))}
           </>
         ) : (

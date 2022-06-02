@@ -12,10 +12,10 @@ const CardGrid = ({ tracks, artists }: CardGridProps) => {
     <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
       <>
         {tracks?.map((track, idx) => (
-          <Card key={idx} ranking={idx + 1} track={track} />
+          <Card key={`${idx}-track`} ranking={idx + 1} track={track} />
         )) ??
           artists?.map((artist, idx) => (
-            <Card key={idx} ranking={idx + 1} artist={artist} />
+            <Card key={`${idx}-artist`} ranking={idx + 1} artist={artist} />
           ))}
       </>
     </div>

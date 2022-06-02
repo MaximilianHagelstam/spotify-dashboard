@@ -29,13 +29,17 @@ const TrackTable = ({ title, href, tracks, isLoading }: TrackRowTableProps) => {
             {Array(10)
               .fill(1)
               .map((_, idx) => (
-                <LoadingTrackRow key={idx} />
+                <LoadingTrackRow key={`${idx}-row-loader`} />
               ))}
           </>
         ) : (
           <>
             {tracks.map((track, idx) => (
-              <TrackRow key={idx} ranking={idx + 1} track={track} />
+              <TrackRow
+                key={`${idx}-recent-track`}
+                ranking={idx + 1}
+                track={track}
+              />
             ))}
           </>
         )}
