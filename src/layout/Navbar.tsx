@@ -1,8 +1,9 @@
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { classNames } from "../lib/helpers";
+import classNames from "../lib/classNames";
 import LogoutButton from "./LogoutButton";
 import navLinks from "./navLinks";
 
@@ -16,12 +17,18 @@ const Navbar = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
-                <Image
-                  height={32}
-                  width={32}
-                  src="/logo.png"
-                  alt="Spotify Dashboard"
-                />
+                <Link href="/" passHref>
+                  <a>
+                    <Image
+                      height={32}
+                      width={32}
+                      src="/logo.png"
+                      alt="Logo"
+                      className="cursor-pointer"
+                    />
+                  </a>
+                </Link>
+
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navLinks.map((link) => (
@@ -62,23 +69,25 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className=" pl-4 pt-2 inline-block">
               {navLinks.map((link) => (
-                <Disclosure.Button
-                  key={link.name}
-                  as="a"
-                  href={link.href}
-                  className={classNames(
-                    router.pathname === link.href
-                      ? "font-bold"
-                      : "text-gray-text hover:text-white transition ease-in-out",
-                    "px-3 text-sm"
-                  )}
-                >
-                  {link.name}
-                </Disclosure.Button>
+                <div key={link.name} className="mb-3">
+                  <Disclosure.Button
+                    as="a"
+                    href={link.href}
+                    className={classNames(
+                      router.pathname === link.href
+                        ? "font-bold"
+                        : "text-gray-text hover:text-white transition ease-in-out",
+                      "text-sm"
+                    )}
+                  >
+                    {link.name}
+                  </Disclosure.Button>
+                </div>
               ))}
             </div>
+
             <div className="border-t border-gray-hover">
               <div className="block px-3 py-2 my-1">
                 <LogoutButton />

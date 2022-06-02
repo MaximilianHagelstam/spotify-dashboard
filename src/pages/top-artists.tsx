@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import Card from "../components/Card";
+import CardGrid from "../components/CardGrid";
 import ErrorPage from "../components/ErrorPage";
-import Loading from "../components/Loading";
+import LoadMoreButton from "../components/LoadMoreButton";
+import Spinner from "../components/Spinner";
 import TimeRangeSelector from "../components/TimeRangeSelector";
 import usePagination from "../hooks/usePagination";
 import Artist from "../interfaces/Artist";
@@ -33,26 +34,14 @@ const TopArtists: NextPage = () => {
         handleTimeRange={setTimeRange}
       />
 
-      {artists && (
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
-          {artists.map((artist, idx) => (
-            <Card key={artist.id} artist={artist} ranking={idx + 1} />
-          ))}
-        </div>
-      )}
+      {artists && <CardGrid artists={artists} />}
 
-      {isLoading && <Loading />}
+      {isLoading && <Spinner />}
 
       {!isReachedEnd && !isLoading && (
-        <div className="grid place-items-center">
-          <button
-            onClick={() => setSize(size + 1)}
-            disabled={isLoading}
-            className="bg-white text-black font-bold py-2 px-6 rounded-full mb-8 hover:scale-105"
-          >
-            Load More
-          </button>
-        </div>
+        <LoadMoreButton onClick={() => setSize(size + 1)}>
+          Load More
+        </LoadMoreButton>
       )}
     </Layout>
   );

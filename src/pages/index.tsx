@@ -1,64 +1,76 @@
-import { setCookies } from "cookies-next";
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import useSWR from "swr";
+import CardRow from "../components/CardRow";
+import ErrorPage from "../components/ErrorPage";
+import TrackRowTable from "../components/TrackTable";
 import useAuth from "../hooks/useAuth";
+import Artist from "../interfaces/Artist";
+import Track from "../interfaces/Track";
+import Layout from "../layout";
 
-const Login: NextPage = () => {
-  const CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-  const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
-  const AUTH_URL = "https://accounts.spotify.com/authorize";
-  const RESPONSE_TYPE = "token";
-  const SCOPE = "user-read-private user-top-read";
+const Dashboard: NextPage = () => {
+  const { fetcher } = useAuth();
 
-  const LOGIN_URL = `${AUTH_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+  const {
+    data: trackData,
+    error: trackError,
+    isValidating: trackLoading,
+  } = useSWR<Track[]>(
+    "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5",
+    fetcher
+  );
 
-  const router = useRouter();
-  const { isAuth } = useAuth();
+  const {
+    data: artistData,
+    error: artistError,
+    isValidating: artistLoading,
+  } = useSWR<Artist[]>(
+    "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5",
+    fetcher
+  );
 
-  useEffect(() => {
-    if (isAuth) {
-      router.push("/top-tracks");
-    }
+  const {
+    data: recentData,
+    error: recentError,
+    isValidating: recentLoading,
+  } = useSWR<{ track: Track }[]>(
+    "https://api.spotify.com/v1/me/player/recently-played?limit=10",
+    fetcher
+  );
 
-    const { hash } = window.location;
-    if (hash) {
-      let token = hash
-        .substring(1)
-        .split("&")
-        .find((elem) => elem.startsWith("access_token"));
+  const recentTracks = recentData?.map((item) => item.track) ?? [];
 
-      if (!token) return;
-
-      token = token.split("=")[1];
-
-      window.location.hash = "";
-      setCookies("token", token);
-
-      router.reload();
-      router.push("/top-tracks");
-    }
-  }, [router, isAuth]);
+  if (
+    trackError !== undefined ||
+    artistError !== undefined ||
+    recentError !== undefined
+  )
+    return <ErrorPage />;
 
   return (
-    <div className="flex h-screen text-center mx-2">
-      <div className="m-auto">
-        <h1 className="text-7xl font-bold mb-8">Welcome</h1>
-        <p className="font-light mb-12">
-          Don&lsquo;t wait till New Year&lsquo;s for Spotify Wrapped, get all
-          the data you need now!
-        </p>
-        <button
-          onClick={() => {
-            router.push(LOGIN_URL);
-          }}
-          className="bg-green text-white text-lg font-bold py-4 px-16 rounded-full hover:scale-105"
-        >
-          Get Started
-        </button>
-      </div>
-    </div>
+    <Layout>
+      <CardRow
+        title="Top Tracks"
+        href="/top-tracks"
+        tracks={trackData}
+        isLoading={trackLoading}
+      />
+
+      <CardRow
+        title="Top Artists"
+        href="/top-artists"
+        artists={artistData}
+        isLoading={artistLoading}
+      />
+
+      <TrackRowTable
+        title="Recently Played"
+        href="/recently-played"
+        tracks={recentTracks}
+        isLoading={recentLoading}
+      />
+    </Layout>
   );
 };
 
-export default Login;
+export default Dashboard;

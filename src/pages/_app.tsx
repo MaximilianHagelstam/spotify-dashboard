@@ -7,7 +7,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         <title>Spotify Dashboard</title>
-        <meta name="description" content="Spotify Dashboard" />
+        <meta
+          name="description"
+          content="Get insights into your music consumption"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
