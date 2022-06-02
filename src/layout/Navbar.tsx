@@ -26,6 +26,7 @@ const Navbar = () => {
                     className="cursor-pointer"
                   />
                 </Link>
+
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navLinks.map((link) => (
@@ -84,6 +85,7 @@ const Navbar = () => {
                 </div>
               ))}
             </div>
+
             <div className="border-t border-gray-hover">
               <div className="block px-3 py-2 my-1">
                 <LogoutButton />

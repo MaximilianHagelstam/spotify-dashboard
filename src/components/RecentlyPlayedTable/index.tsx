@@ -19,10 +19,12 @@ const RecentlyPlayedTable = ({
         <div className="text-xl font-bold hover:underline">
           <Link href={href}>{title}</Link>
         </div>
+
         <div className="text-gray-text hover:underline">
           <Link href={href}>See more</Link>
         </div>
       </div>
+
       <div>
         <div className="flex-col flex">
           {tracks.map((track, idx) => (

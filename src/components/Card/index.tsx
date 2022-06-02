@@ -41,6 +41,7 @@ const Card = ({ track, artist, ranking }: CardProps) => {
       <p className="mt-4 text-lg truncate">
         {ranking}. {track?.name ?? artist?.name}
       </p>
+
       <h3 className="mt-1 text-gray-text truncate">
         {track?.artists.map((trackArtist) => trackArtist.name).join(", ") ??
           artist?.genres[0]}

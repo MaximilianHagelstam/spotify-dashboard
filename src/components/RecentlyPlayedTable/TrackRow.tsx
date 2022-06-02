@@ -15,6 +15,7 @@ const TrackRow = ({ track, ranking }: TrackRowProps) => {
       <div className="text-gray-text hidden lg:block mt-auto mb-auto mx-8">
         {ranking}
       </div>
+
       <div className="w-12/12 lg:w-7/12 truncate">
         <div className="w-full flex items-start truncate overflow-hidden">
           <div className="w-12 h-12 ml-2 lg:ml-0 overflow-hidden rounded-full">
@@ -25,12 +26,14 @@ const TrackRow = ({ track, ranking }: TrackRowProps) => {
               alt="track"
             />
           </div>
+
           <div className="ml-4 truncate mt-auto mb-auto">
             <Link href={track.external_urls.spotify} passHref>
               <h4 className="truncate mr-4 hover:underline hover:cursor-pointer">
                 {track.name}
               </h4>
             </Link>
+
             <Link href={track.artists[0].external_urls.spotify} passHref>
               <h3 className="text-sm text-gray-text truncate hover:underline hover:cursor-pointer">
                 {track.artists[0].name}
@@ -39,11 +42,13 @@ const TrackRow = ({ track, ranking }: TrackRowProps) => {
           </div>
         </div>
       </div>
+
       <Link href={track.album.external_urls.spotify} passHref>
         <div className="text-gray-text hidden lg:block w-4/12 text-left truncate mt-auto mb-auto hover:underline hover:cursor-pointer">
           {track.album.name}
         </div>
       </Link>
+
       <div className="text-gray-text hidden lg:block text-left mx-8 mt-auto mb-auto">
         {msToTime(track.duration_ms)}
       </div>

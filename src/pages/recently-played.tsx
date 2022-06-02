@@ -32,4 +32,5 @@ const RecentlyPlayed: NextPage = () => {
     </Layout>
   );
 };
+
 export default RecentlyPlayed;
