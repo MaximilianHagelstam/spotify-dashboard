@@ -12,12 +12,20 @@ import Layout from "../layout";
 const Dashboard: NextPage = () => {
   const { fetcher } = useAuth();
 
-  const { data: trackData, error: trackError } = useSWR<Track[]>(
+  const {
+    data: trackData,
+    error: trackError,
+    isValidating: trackLoading,
+  } = useSWR<Track[]>(
     "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5",
     fetcher
   );
 
-  const { data: artistData, error: artistError } = useSWR<Artist[]>(
+  const {
+    data: artistData,
+    error: artistError,
+    isValidating: artistLoading,
+  } = useSWR<Artist[]>(
     "https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=5",
     fetcher
   );
@@ -40,13 +48,25 @@ const Dashboard: NextPage = () => {
     <Layout>
       <CardRow title="Top Tracks" href="/top-tracks">
         {trackData?.map((track, idx) => (
-          <Card key={track.id} ranking={idx + 1} track={track} scrollable />
+          <Card
+            key={track.id}
+            ranking={idx + 1}
+            track={track}
+            scrollable
+            loading={trackLoading}
+          />
         ))}
       </CardRow>
 
       <CardRow title="Top Artists" href="/top-artists">
         {artistData?.map((artist, idx) => (
-          <Card key={artist.id} ranking={idx + 1} artist={artist} scrollable />
+          <Card
+            key={artist.id}
+            ranking={idx + 1}
+            artist={artist}
+            scrollable
+            loading={artistLoading}
+          />
         ))}
       </CardRow>
 
