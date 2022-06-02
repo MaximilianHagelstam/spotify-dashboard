@@ -7,10 +7,10 @@ interface TrackRowTableProps {
   title: string;
   href: string;
   tracks: Track[];
-  loading: boolean;
+  isLoading: boolean;
 }
 
-const TrackTable = ({ title, href, tracks, loading }: TrackRowTableProps) => {
+const TrackTable = ({ title, href, tracks, isLoading }: TrackRowTableProps) => {
   return (
     <div className="mb-12">
       <div className="flex justify-between items-center mb-4">
@@ -24,7 +24,7 @@ const TrackTable = ({ title, href, tracks, loading }: TrackRowTableProps) => {
       </div>
 
       <div className="flex-col flex">
-        {loading ? (
+        {isLoading ? (
           <>
             {Array(10)
               .fill(1)

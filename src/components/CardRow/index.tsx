@@ -9,10 +9,10 @@ interface CardRowProps {
   href: string;
   tracks?: Track[];
   artists?: Artist[];
-  loading: boolean;
+  isLoading: boolean;
 }
 
-const CardRow = ({ title, href, tracks, artists, loading }: CardRowProps) => {
+const CardRow = ({ title, href, tracks, artists, isLoading }: CardRowProps) => {
   return (
     <div className="mb-12">
       <div className="flex justify-between items-center mb-4">
@@ -26,7 +26,7 @@ const CardRow = ({ title, href, tracks, artists, loading }: CardRowProps) => {
       </div>
 
       <div className="flex flex-no-wrap space-x-4 overflow-x-auto scrolling-touch items-start lg:pr-16 lg:overflow-x-hidden">
-        {loading ? (
+        {isLoading ? (
           <>
             {Array(5)
               .fill(1)
@@ -37,14 +37,19 @@ const CardRow = ({ title, href, tracks, artists, loading }: CardRowProps) => {
         ) : (
           <>
             {tracks?.map((track, idx) => (
-              <Card key={track.id} ranking={idx + 1} track={track} scrollable />
+              <Card
+                key={track.id}
+                ranking={idx + 1}
+                track={track}
+                isScrollable
+              />
             )) ??
               artists?.map((artist, idx) => (
                 <Card
                   key={artist.id}
                   ranking={idx + 1}
                   artist={artist}
-                  scrollable
+                  isScrollable
                 />
               ))}
           </>

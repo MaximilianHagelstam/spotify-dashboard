@@ -8,13 +8,10 @@ const NotFound = () => {
     <div className="flex h-screen text-center">
       <div className="m-auto">
         <Image height={64} width={64} src="/logo.png" alt="Spotify Logo" />
-
         <h1 className="text-5xl font-bold mt-12">Page not found</h1>
-
         <p className="font-light mt-4">
           We can&lsquo;t seem to find the page you are looking for.
         </p>
-
         <button
           onClick={() => {
             router.push("/");

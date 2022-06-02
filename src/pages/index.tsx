@@ -53,21 +53,21 @@ const Dashboard: NextPage = () => {
         title="Top Tracks"
         href="/top-tracks"
         tracks={trackData}
-        loading={trackLoading}
+        isLoading={trackLoading}
       />
 
       <CardRow
         title="Top Artists"
         href="/top-artists"
         artists={artistData}
-        loading={artistLoading}
+        isLoading={artistLoading}
       />
 
       <TrackRowTable
         title="Recently Played"
         href="/recently-played"
         tracks={recentTracks}
-        loading={recentLoading}
+        isLoading={recentLoading}
       />
     </Layout>
   );
