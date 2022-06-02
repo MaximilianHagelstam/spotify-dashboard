@@ -18,13 +18,15 @@ const Navbar = () => {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <Link href="/" passHref>
-                  <Image
-                    height={32}
-                    width={32}
-                    src="/logo.png"
-                    alt="Logo"
-                    className="cursor-pointer"
-                  />
+                  <a>
+                    <Image
+                      height={32}
+                      width={32}
+                      src="/logo.png"
+                      alt="Logo"
+                      className="cursor-pointer"
+                    />
+                  </a>
                 </Link>
 
                 <div className="hidden md:block">
