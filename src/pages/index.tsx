@@ -4,7 +4,9 @@ import Card from "../components/Card";
 import CardRow from "../components/CardRow";
 import ErrorPage from "../components/ErrorPage";
 import LoadingCard from "../components/LoadingCard";
-import RecentlyPlayedTable from "../components/RecentlyPlayedTable";
+import LoadingTrackRow from "../components/LoadingTrackRow";
+import TrackRow from "../components/TrackRow";
+import TrackRowTable from "../components/TrackRowTable";
 import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Track from "../interfaces/Track";
@@ -31,12 +33,14 @@ const Dashboard: NextPage = () => {
     fetcher
   );
 
-  const { data: recentData, error: recentError } = useSWR<{ track: Track }[]>(
+  const {
+    data: recentData,
+    error: recentError,
+    isValidating: recentLoading,
+  } = useSWR<{ track: Track }[]>(
     "https://api.spotify.com/v1/me/player/recently-played?limit=10",
     fetcher
   );
-
-  const recentTracks = recentData?.map((item) => item.track);
 
   if (
     trackError !== undefined ||
@@ -88,13 +92,23 @@ const Dashboard: NextPage = () => {
         )}
       </CardRow>
 
-      {recentTracks && (
-        <RecentlyPlayedTable
-          title="Recently Played"
-          href="/recently-played"
-          tracks={recentTracks}
-        />
-      )}
+      <TrackRowTable title="Recently Played" href="/recently-played">
+        {recentLoading ? (
+          <>
+            {Array(10)
+              .fill(1)
+              .map((_, idx) => (
+                <LoadingTrackRow key={idx} />
+              ))}
+          </>
+        ) : (
+          <>
+            {recentData?.map((item, idx) => (
+              <TrackRow key={idx} ranking={idx + 1} track={item.track} />
+            ))}
+          </>
+        )}
+      </TrackRowTable>
     </Layout>
   );
 };

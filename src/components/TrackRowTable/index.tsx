@@ -1,18 +1,13 @@
 import Link from "next/link";
-import Track from "../../interfaces/Track";
-import TrackRow from "./TrackRow";
+import { ReactNode } from "react";
 
-interface RecentlyPlayedTableProps {
+interface TrackRowTableProps {
   title: string;
   href: string;
-  tracks: Track[];
+  children: ReactNode;
 }
 
-const RecentlyPlayedTable = ({
-  title,
-  href,
-  tracks,
-}: RecentlyPlayedTableProps) => {
+const TrackRowTable = ({ title, href, children }: TrackRowTableProps) => {
   return (
     <div className="mb-12">
       <div className="flex justify-between items-center mb-4">
@@ -26,14 +21,10 @@ const RecentlyPlayedTable = ({
       </div>
 
       <div>
-        <div className="flex-col flex">
-          {tracks.map((track, idx) => (
-            <TrackRow key={idx} track={track} ranking={idx + 1} />
-          ))}
-        </div>
+        <div className="flex-col flex">{children}</div>
       </div>
     </div>
   );
 };
 
-export default RecentlyPlayedTable;
+export default TrackRowTable;
