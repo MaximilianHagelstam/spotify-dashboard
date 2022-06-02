@@ -2,9 +2,7 @@ import type { NextPage } from "next";
 import useSWR from "swr";
 import CardRow from "../components/CardRow";
 import ErrorPage from "../components/ErrorPage";
-import LoadingTrackRow from "../components/LoadingTrackRow";
-import TrackRow from "../components/TrackRow";
-import TrackRowTable from "../components/TrackRowTable";
+import TrackRowTable from "../components/TrackTable";
 import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Track from "../interfaces/Track";
@@ -40,6 +38,8 @@ const Dashboard: NextPage = () => {
     fetcher
   );
 
+  const recentTracks = recentData?.map((item) => item.track) ?? [];
+
   if (
     trackError !== undefined ||
     artistError !== undefined ||
@@ -63,23 +63,12 @@ const Dashboard: NextPage = () => {
         loading={artistLoading}
       />
 
-      <TrackRowTable title="Recently Played" href="/recently-played">
-        {recentLoading ? (
-          <>
-            {Array(10)
-              .fill(1)
-              .map((_, idx) => (
-                <LoadingTrackRow key={idx} />
-              ))}
-          </>
-        ) : (
-          <>
-            {recentData?.map((item, idx) => (
-              <TrackRow key={idx} ranking={idx + 1} track={item.track} />
-            ))}
-          </>
-        )}
-      </TrackRowTable>
+      <TrackRowTable
+        title="Recently Played"
+        href="/recently-played"
+        tracks={recentTracks}
+        loading={recentLoading}
+      />
     </Layout>
   );
 };
