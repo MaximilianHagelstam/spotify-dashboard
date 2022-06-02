@@ -1,4 +1,4 @@
-const Loading = () => {
+const Spinner = () => {
   return (
     <div className="grid place-items-center">
       <svg
@@ -21,4 +21,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Spinner;

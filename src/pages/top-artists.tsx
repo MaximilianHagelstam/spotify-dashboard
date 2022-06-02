@@ -3,8 +3,8 @@ import { useState } from "react";
 import Card from "../components/Card";
 import CardGrid from "../components/CardGrid";
 import ErrorPage from "../components/ErrorPage";
-import Loading from "../components/Loading";
 import LoadMoreButton from "../components/LoadMoreButton";
+import Spinner from "../components/Spinner";
 import TimeRangeSelector from "../components/TimeRangeSelector";
 import usePagination from "../hooks/usePagination";
 import Artist from "../interfaces/Artist";
@@ -43,7 +43,7 @@ const TopArtists: NextPage = () => {
         </CardGrid>
       )}
 
-      {isLoading && <Loading />}
+      {isLoading && <Spinner />}
 
       {!isReachedEnd && !isLoading && (
         <LoadMoreButton onClick={() => setSize(size + 1)}>

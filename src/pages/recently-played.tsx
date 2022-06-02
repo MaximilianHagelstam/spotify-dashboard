@@ -3,7 +3,7 @@ import useSWR from "swr";
 import Card from "../components/Card";
 import CardGrid from "../components/CardGrid";
 import ErrorPage from "../components/ErrorPage";
-import Loading from "../components/Loading";
+import Spinner from "../components/Spinner";
 import useAuth from "../hooks/useAuth";
 import Track from "../interfaces/Track";
 import Layout from "../layout";
@@ -28,7 +28,7 @@ const RecentlyPlayed: NextPage = () => {
         </CardGrid>
       )}
 
-      {isValidating && <Loading />}
+      {isValidating && <Spinner />}
     </Layout>
   );
 };
