@@ -9,7 +9,7 @@ const Login: NextPage = () => {
   const REDIRECT_URI = process.env.NEXT_PUBLIC_SPOTIFY_REDIRECT_URI;
   const AUTH_URL = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
-  const SCOPE = "user-top-read user-read-recently-played";
+  const SCOPE = "user-top-read";
 
   const LOGIN_URL = `${AUTH_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
 
@@ -44,12 +44,10 @@ const Login: NextPage = () => {
     <div className="flex h-screen text-center mx-2">
       <div className="m-auto">
         <h1 className="text-7xl font-bold mb-8">Welcome</h1>
-
         <p className="font-light mb-12">
           Don&lsquo;t wait till New Year&lsquo;s for Spotify Wrapped, get all
           the data you need now!
         </p>
-
         <button
           onClick={() => {
             router.push(LOGIN_URL);

@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import useSWR from "swr";
 import CardRow from "../components/CardRow";
 import ErrorPage from "../components/ErrorPage";
-import TrackRowTable from "../components/TrackTable";
 import useAuth from "../hooks/useAuth";
 import Artist from "../interfaces/Artist";
 import Track from "../interfaces/Track";
@@ -29,45 +28,23 @@ const Dashboard: NextPage = () => {
     fetcher
   );
 
-  const {
-    data: recentData,
-    error: recentError,
-    isValidating: recentLoading,
-  } = useSWR<{ track: Track }[]>(
-    "https://api.spotify.com/v1/me/player/recently-played?limit=10",
-    fetcher
-  );
-
-  const recentTracks = recentData?.map((item) => item.track) ?? [];
-
-  if (
-    trackError !== undefined ||
-    artistError !== undefined ||
-    recentError !== undefined
-  )
+  if (trackError !== undefined || artistError !== undefined)
     return <ErrorPage />;
 
   return (
     <Layout>
       <CardRow
-        title="Top Tracks"
+        title="Top tracks this month"
         href="/top-tracks"
         tracks={trackData}
         isLoading={trackLoading}
       />
 
       <CardRow
-        title="Top Artists"
+        title="Top artists this month"
         href="/top-artists"
         artists={artistData}
         isLoading={artistLoading}
-      />
-
-      <TrackRowTable
-        title="Recently Played"
-        href="/recently-played"
-        tracks={recentTracks}
-        isLoading={recentLoading}
       />
     </Layout>
   );
