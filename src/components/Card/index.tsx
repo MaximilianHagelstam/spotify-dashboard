@@ -14,6 +14,11 @@ interface CardProps {
 const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
+  const trackArtists = track?.artists
+    .map((trackArtist) => trackArtist.name)
+    .join(", ");
+  const artistGenre = artist?.genres[0];
+
   return (
     <a
       href={track?.external_urls.spotify ?? artist?.external_urls.spotify}
@@ -23,7 +28,7 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
     >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg shadow-lg">
         <Image
-          alt="Cover"
+          alt="Image"
           src={
             track?.album.images[0].url ??
             artist?.images[0].url ??
@@ -40,14 +45,11 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
           onLoadingComplete={() => setIsLoading(false)}
         />
       </div>
-
       <p className="mt-4 text-lg truncate">
         {ranking}. {track?.name ?? artist?.name}
       </p>
-
       <h3 className="mt-1 text-gray-text truncate">
-        {track?.artists.map((trackArtist) => trackArtist.name).join(", ") ??
-          artist?.genres[0]}
+        {trackArtists ?? artistGenre}
       </h3>
     </a>
   );

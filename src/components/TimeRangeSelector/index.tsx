@@ -27,7 +27,6 @@ const TimeRangeSelector = ({
       >
         Month
       </button>
-
       <button
         onClick={() => handleTimeRange("medium_term")}
         className={classNames(
@@ -37,7 +36,6 @@ const TimeRangeSelector = ({
       >
         6 months
       </button>
-
       <button
         onClick={() => handleTimeRange("long_term")}
         className={classNames(

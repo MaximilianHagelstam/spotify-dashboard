@@ -21,7 +21,6 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-full">
       <Navbar />
-
       <header>
         <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold">
@@ -35,7 +34,6 @@ const Layout = ({ children }: LayoutProps) => {
           </h1>
         </div>
       </header>
-
       <main>
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="px-4 sm:px-0">{children}</div>

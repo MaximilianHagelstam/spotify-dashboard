@@ -6,10 +6,9 @@ const About: NextPage = () => {
     <Layout>
       <div className="max-w-lg font-light">
         <p>
-          Spotify Dashboard provides an overview of your listening habits. Get
-          your favorite tracks and artists, and view a list of your most recent
-          tracks. The project is completely open source and you can view the
-          code on{" "}
+          Spotify Dashboard provides an overview of your listening habits. You
+          can view your favorite tracks and artists from different time periods.
+          The project is completely open source and you can view the code on{" "}
           <a
             className="font-sans underline"
             href="https://github.com/MaximilianHagelstam/spotify-dashboard/"
@@ -21,8 +20,7 @@ const About: NextPage = () => {
         <p className="mt-4">
           This dashboard has no analytics and collects no personal data. The
           token authorized is stored in cookies. We request access to your top
-          artists, top tracks, and recent tracks. You can read more about
-          Spotify&apos;s API{" "}
+          artists and tracks. You can read more about Spotify&apos;s API{" "}
           <a
             className="font-sans underline"
             href="https://github.com/MaximilianHagelstam/spotify-dashboard/"
@@ -32,7 +30,7 @@ const About: NextPage = () => {
         </p>
 
         <p className="mt-4 mb-8">
-          Have fun and happy listening{" "}
+          Have fun listening{" "}
           <span role="img" aria-label="peace sign">
             ✌️
           </span>

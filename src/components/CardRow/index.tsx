@@ -19,12 +19,10 @@ const CardRow = ({ title, href, tracks, artists, isLoading }: CardRowProps) => {
         <div className="text-xl font-bold hover:underline">
           <Link href={href}>{title}</Link>
         </div>
-
         <div className="text-gray-text hover:underline">
           <Link href={href}>See more</Link>
         </div>
       </div>
-
       <div className="flex flex-no-wrap space-x-4 overflow-x-auto scrolling-touch items-start lg:pr-16 lg:overflow-x-hidden">
         {isLoading ? (
           <>
