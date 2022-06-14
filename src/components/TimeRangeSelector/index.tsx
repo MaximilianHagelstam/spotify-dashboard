@@ -11,10 +11,11 @@ const TimeRangeSelector = ({
   currentTimeRange,
   handleTimeRange,
 }: TimeRangeSelectorProps) => {
-  const selectedStyle = "bg-white text-black hover:bg-white hover:text-black";
-  const notSelectedStyle = "text-white hover:bg-[#333333]";
+  const selectedStyle =
+    "bg-[#f6f6f6] text-black hover:bg-white hover:text-gray-background";
+  const notSelectedStyle = "bg-[#232323] text-white hover:bg-[#2a2a2a]";
   const commonStyle =
-    "border-white border-2 font-bold py-2 px-4 text-sm rounded-full mb-8";
+    "py-2 px-4 text-sm rounded-full mb-8 leading-0 transition ease-in-out";
 
   return (
     <>

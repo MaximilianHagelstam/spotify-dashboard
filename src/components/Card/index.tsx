@@ -22,7 +22,7 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
   return (
     <a
       href={track?.external_urls.spotify ?? artist?.external_urls.spotify}
-      className={`bg-gray-accent hover:bg-gray-hover px-4 py-4 rounded-lg ${
+      className={`bg-gray-accent hover:bg-gray-hover px-4 py-4 rounded-lg transition ease-in-out ${
         isScrollable && "flex-none w-1/2 md:w-1/4 lg:w-1/5"
       }`}
     >
