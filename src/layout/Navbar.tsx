@@ -18,7 +18,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <Link href="/" passHref>
-                  <a>
+                  <a style={{ lineHeight: 0 }}>
                     <Image
                       height={32}
                       width={32}

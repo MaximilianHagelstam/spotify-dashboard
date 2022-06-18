@@ -28,8 +28,7 @@ const Dashboard: NextPage = () => {
     fetcher
   );
 
-  if (trackError !== undefined || artistError !== undefined)
-    return <ErrorPage />;
+  if (trackError || artistError) return <ErrorPage />;
 
   return (
     <Layout>
@@ -39,7 +38,6 @@ const Dashboard: NextPage = () => {
         tracks={trackData}
         isLoading={trackLoading}
       />
-
       <CardRow
         title="Top artists this month"
         href="/top-artists"

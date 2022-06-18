@@ -27,9 +27,8 @@ const Layout = ({ children }: LayoutProps) => {
             {navLinks.map((navLink) => {
               if (navLink.href === router.pathname) {
                 return navLink.name;
-              } else {
-                return;
               }
+              return null;
             })}
           </h1>
         </div>

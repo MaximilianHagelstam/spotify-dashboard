@@ -23,7 +23,7 @@ const About: NextPage = () => {
           artists and tracks. You can read more about Spotify&apos;s API{" "}
           <a
             className="font-sans underline"
-            href="https://github.com/MaximilianHagelstam/spotify-dashboard/"
+            href="https://developer.spotify.com/dashboard/"
           >
             here.
           </a>

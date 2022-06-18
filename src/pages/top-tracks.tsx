@@ -39,9 +39,7 @@ const TopTracks: NextPage = () => {
       {isLoading && <Spinner />}
 
       {!isReachedEnd && !isLoading && (
-        <LoadMoreButton onClick={() => setSize(size + 1)}>
-          Load More
-        </LoadMoreButton>
+        <LoadMoreButton onClick={() => setSize(size + 1)} />
       )}
     </Layout>
   );

@@ -2,7 +2,7 @@ import { getCookie } from "cookies-next";
 
 const useAuth = () => {
   const token = getCookie("token");
-  const isAuth = token !== undefined;
+  const isAuth = !!token;
 
   const fetcher = (apiUrl: string) =>
     fetch(apiUrl, {
@@ -13,7 +13,6 @@ const useAuth = () => {
       if (!res.ok) {
         throw new Error("Unexpected response");
       }
-
       const data = await res.json();
       return data.items;
     });

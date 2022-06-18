@@ -5,20 +5,5 @@
     "source.fixAll.eslint": true,
     "source.fixAll.format": true,
     "source.organizeImports": true
-  },
-  "search.exclude": {
-    "node_modules": true,
-    ".next": true,
-    "yarn.lock": true
-  },
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "**/node_modules": true,
-    "**/.next": true
   }
 }

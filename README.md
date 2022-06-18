@@ -11,19 +11,31 @@
 ## Prerequisites
 
 - Node.js 16.x
-- Yarn (`npm i -g yarn`)
-- Spotify API credentials ([developer dashboard](https://developer.spotify.com/dashboard/applications))
+- Yarn
+- Spotify API credentials
 
 ## Getting Started
 
-```
-git clone https://github.com/MaximilianHagelstam/spotify-dashboard.git
-cd spotify-dashboard
+1. Clone this repository
 
-yarn install
-yarn prepare
-yarn build
-yarn start
+```sh
+git clone https://github.com/MaximilianHagelstam/spotify-dashboard
+```
+
+2. Follow the [docs](https://developer.spotify.com/documentation/web-api/quick-start/) to register your Spotify application
+3. Create a `.env.local` file at the project root with the following:
+
+```
+NEXT_PUBLIC_SPOTIFY_CLIENT_ID=
+NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET=
+NEXT_PUBLIC_SPOTIFY_REDIRECT_URI=
+```
+
+4. Install the dependencies and run the the app
+
+```
+yarn
+yarn dev
 ```
 
 ## Stack
