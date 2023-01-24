@@ -15,15 +15,15 @@ interface CardRowProps {
 const CardRow = ({ title, href, tracks, artists, isLoading }: CardRowProps) => {
   return (
     <div className="mb-12">
-      <div className="flex justify-between items-center mb-4">
-        <div className="text-xl font-bold hover:underline">
+      <div className="mb-4 flex items-center justify-between">
+        <div className="font-bold text-xl hover:underline">
           <Link href={href}>{title}</Link>
         </div>
         <div className="text-gray-text hover:underline">
           <Link href={href}>See more</Link>
         </div>
       </div>
-      <div className="flex flex-no-wrap space-x-4 overflow-x-auto scrolling-touch items-start lg:pr-16 lg:overflow-x-hidden">
+      <div className="flex-no-wrap scrolling-touch flex items-start space-x-4 overflow-x-auto lg:overflow-x-hidden lg:pr-16">
         {isLoading ? (
           <>
             {Array(5)

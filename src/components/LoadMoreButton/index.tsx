@@ -5,7 +5,7 @@ const LoadMoreButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
     <div className="grid place-items-center">
       <button
         {...props}
-        className="bg-white text-black font-bold py-2 px-6 rounded-full mb-8 hover:scale-105"
+        className="mb-8 rounded-full bg-white py-2 px-6 font-bold text-black hover:scale-105"
       >
         Load More
       </button>

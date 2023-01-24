@@ -14,8 +14,8 @@ const Navbar = () => {
     <Disclosure as="nav" className="bg-black">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <Link href="/" passHref>
                   <a style={{ lineHeight: 0 }}>
@@ -38,7 +38,7 @@ const Navbar = () => {
                         className={classNames(
                           router.pathname === link.href
                             ? "font-bold"
-                            : "text-gray-text hover:text-white transition ease-in-out",
+                            : "text-gray-text transition ease-in-out hover:text-white",
                           "px-3 text-sm"
                         )}
                       >
@@ -56,7 +56,7 @@ const Navbar = () => {
               </div>
 
               <div className="-mr-2 flex md:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-900">
+                <Disclosure.Button className="text-gray-400 hover:text-gray-900 inline-flex items-center justify-center rounded-md p-2">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -69,7 +69,7 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="md:hidden">
-            <div className=" pl-4 pt-2 inline-block">
+            <div className=" inline-block pl-4 pt-2">
               {navLinks.map((link) => (
                 <div key={link.name} className="mb-3">
                   <Disclosure.Button
@@ -78,7 +78,7 @@ const Navbar = () => {
                     className={classNames(
                       router.pathname === link.href
                         ? "font-bold"
-                        : "text-gray-text hover:text-white transition ease-in-out",
+                        : "text-gray-text transition ease-in-out hover:text-white",
                       "text-sm"
                     )}
                   >
@@ -89,7 +89,7 @@ const Navbar = () => {
             </div>
 
             <div className="border-t border-gray-hover">
-              <div className="block px-3 py-2 my-1">
+              <div className="my-1 block px-3 py-2">
                 <LogoutButton />
               </div>
             </div>

@@ -22,8 +22,8 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-full">
       <Navbar />
       <header>
-        <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold">
+        <div className="mx-auto max-w-7xl py-10 px-4 sm:px-6 lg:px-8">
+          <h1 className="font-bold text-3xl">
             {navLinks.map((navLink) => {
               if (navLink.href === router.pathname) {
                 return navLink.name;
@@ -34,7 +34,7 @@ const Layout = ({ children }: LayoutProps) => {
         </div>
       </header>
       <main>
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="px-4 sm:px-0">{children}</div>
         </div>
       </main>

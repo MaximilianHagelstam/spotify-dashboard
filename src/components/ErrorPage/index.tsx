@@ -9,14 +9,14 @@ const ErrorPage = () => {
     <div className="flex h-screen text-center">
       <div className="m-auto">
         <Image height={64} width={64} src="/logo.png" alt="Logo" />
-        <h1 className="text-5xl font-bold mt-12">Oops</h1>
-        <p className="font-light mt-4">There was an error loading this page.</p>
+        <h1 className="mt-12 font-bold text-5xl">Oops</h1>
+        <p className="mt-4 font-light">There was an error loading this page.</p>
         <button
           onClick={() => {
             removeCookies("token");
             router.reload();
           }}
-          className="bg-white text-black font-bold py-4 px-8 rounded-full mt-8 hover:scale-105"
+          className="mt-8 rounded-full bg-white py-4 px-8 font-bold text-black hover:scale-105"
         >
           Retry
         </button>

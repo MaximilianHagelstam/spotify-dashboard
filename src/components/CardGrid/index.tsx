@@ -9,7 +9,7 @@ interface CardGridProps {
 
 const CardGrid = ({ tracks, artists }: CardGridProps) => {
   return (
-    <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 mb-8">
+    <div className="mb-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
       {tracks?.map((track, idx) => (
         <Card key={`${idx}-track`} ranking={idx + 1} track={track} />
       )) ??

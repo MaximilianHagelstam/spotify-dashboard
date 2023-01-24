@@ -22,8 +22,8 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
   return (
     <a
       href={track?.external_urls.spotify ?? artist?.external_urls.spotify}
-      className={`bg-gray-accent hover:bg-gray-hover px-4 py-4 rounded-lg transition ease-in-out ${
-        isScrollable && "flex-none w-1/2 md:w-1/4 lg:w-1/5"
+      className={`rounded-lg bg-gray-accent px-4 py-4 transition ease-in-out hover:bg-gray-hover ${
+        isScrollable && "w-1/2 flex-none md:w-1/4 lg:w-1/5"
       }`}
     >
       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg shadow-lg">
@@ -45,10 +45,10 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
           onLoadingComplete={() => setIsLoading(false)}
         />
       </div>
-      <p className="mt-4 text-lg truncate">
+      <p className="mt-4 truncate text-lg">
         {ranking}. {track?.name ?? artist?.name}
       </p>
-      <h3 className="mt-1 text-gray-text truncate">
+      <h3 className="mt-1 truncate text-gray-text">
         {trackArtists ?? artistGenre}
       </h3>
     </a>
