@@ -8,7 +8,7 @@ const NotFound = () => {
     <div className="flex h-screen text-center">
       <div className="m-auto">
         <Image height={64} width={64} src="/logo.png" alt="Spotify Logo" />
-        <h1 className="mt-12 font-bold text-5xl">Page not found</h1>
+        <h1 className="mt-12 text-5xl font-bold">Page not found</h1>
         <p className="mt-4 font-light">
           We can&lsquo;t seem to find the page you are looking for.
         </p>

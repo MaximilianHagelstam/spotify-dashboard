@@ -34,10 +34,12 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
             artist?.images[0].url ??
             "/placeholder.png"
           }
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width: 768px) 50vw,
+              (max-width: 1200px) 33vw,
+              20vw"
           className={classNames(
-            "duration-700 ease-in-out",
+            "object-cover duration-700 ease-in-out",
             isLoading
               ? "scale-110 blur-2xl grayscale"
               : "scale-100 blur-0 grayscale-0"
@@ -48,9 +50,9 @@ const Card = ({ track, artist, ranking, isScrollable = false }: CardProps) => {
       <p className="mt-4 truncate text-lg">
         {ranking}. {track?.name ?? artist?.name}
       </p>
-      <h3 className="mt-1 truncate text-gray-text">
+      <p className="mt-1 truncate text-gray-text">
         {trackArtists ?? artistGenre}
-      </h3>
+      </p>
     </a>
   );
 };

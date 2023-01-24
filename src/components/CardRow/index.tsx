@@ -16,7 +16,7 @@ const CardRow = ({ title, href, tracks, artists, isLoading }: CardRowProps) => {
   return (
     <div className="mb-12">
       <div className="mb-4 flex items-center justify-between">
-        <div className="font-bold text-xl hover:underline">
+        <div className="text-xl font-bold hover:underline">
           <Link href={href}>{title}</Link>
         </div>
         <div className="text-gray-text hover:underline">

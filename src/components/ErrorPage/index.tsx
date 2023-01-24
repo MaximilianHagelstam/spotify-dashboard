@@ -9,7 +9,7 @@ const ErrorPage = () => {
     <div className="flex h-screen text-center">
       <div className="m-auto">
         <Image height={64} width={64} src="/logo.png" alt="Logo" />
-        <h1 className="mt-12 font-bold text-5xl">Oops</h1>
+        <h1 className="mt-12 text-5xl font-bold">Oops</h1>
         <p className="mt-4 font-light">There was an error loading this page.</p>
         <button
           onClick={() => {

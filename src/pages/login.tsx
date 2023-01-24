@@ -43,7 +43,7 @@ const Login: NextPage = () => {
   return (
     <div className="mx-2 flex h-screen text-center">
       <div className="m-auto">
-        <h1 className="mb-8 font-bold text-7xl">Welcome</h1>
+        <h1 className="mb-8 text-7xl font-bold">Welcome</h1>
         <p className="mb-12 font-light">
           Don&lsquo;t wait till New Year&lsquo;s for Spotify Wrapped, get all
           the data you need now!
@@ -52,7 +52,7 @@ const Login: NextPage = () => {
           onClick={() => {
             router.push(LOGIN_URL);
           }}
-          className="rounded-full bg-green py-4 px-16 font-bold text-lg text-white hover:scale-105"
+          className="rounded-full bg-green py-4 px-16 text-lg font-bold text-white hover:scale-105"
         >
           Get Started
         </button>
